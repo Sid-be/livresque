@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import url('http://fonts.cdnfonts.com/css/euclid-circular-b');
+
+html { height: 100%; }
+
+body{
+    box-sizing: border-box;
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: -webkit-linear-gradient(top, rgb(229, 237, 232) 0%, rgb(183, 199, 201) 80%, rgb(179, 194, 196) 100%);
+    background: -o-linear-gradient(top, rgb(229, 237, 232) 0%, rgb(183, 199, 201) 80%, rgb(179, 194, 196) 100%);
+    background: -ms-linear-gradient(top, rgb(229, 237, 232) 0%, rgb(183, 199, 201) 80%, rgb(179, 194, 196) 100%);
+    background: -moz-linear-gradient(top, rgb(229, 237, 232) 0%, rgb(183, 199, 201) 80%, rgb(179, 194, 196) 100%);
+    background: linear-gradient(to bottom, rgb(229, 237, 232) 0%, rgb(183, 199, 201) 80%, rgb(179, 194, 196) 100%);
+    
+    padding-top:3em;
+ 
+  color:#28353c;
+
+
+}
+
+input{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+}
+input:focus{
+    outline: none;
+}
+app-home{
+    width:100%;
+    
+}
+app-nav-top{
+    display:flex;
+    flex-direction: column;
+}
+app-left-nav{
+    height:60%;
+    position: absolute;
+    display:flex;
+    flex-direction: column;
+}
+.mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #725b3a !important;
+   }
+  
+   ::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: #725b3a !important;
+  } 
+  
+  .mat-form-field-ripple {
+   /*change color of underline when focused*/
+   background-color: #725b3a !important;
+  }
+  ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-checkbox-background {
+
+    background-color: #fca72c !important;
+  }
+  ::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: #fca72c;
+}
+
+

@@ -1,0 +1,14 @@
+
+<div class="home-bottom">
+    <div class="galerie2">
+    
+       <figure *ngFor="let onebook of booksList">
+           <img [attr.data-isbnvalue]="onebook?.isbn" (click)="openBook(onebook?.isbn)" src={{onebook.image}} alt={{onebook.title}} />
+           <span></span>
+          </figure> 
+    
+          
+    </div>
+
+</div>
+

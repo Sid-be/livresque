@@ -1,0 +1,33 @@
+<div class="home-header" fxLayout.lt-md="column"  fxLayoutGap.gt-sm="0">
+  
+  <h1>Derniers livres ajoutés</h1>
+    <div class="title-header"><a href="">Voir la liste complète</a>
+      <div class="prompt"></div>
+    
+  </div>
+
+  <div class="galerie" fxLayout="row">
+    <figure *ngFor="let book of booksList" fxFlex.gt-sm="16.66%" fxFlex.lt-md="33.33%">
+      <img 
+        (click)="openBook(book?.isbn)"
+        src="{{ book?.image }}"
+        alt="{{ book?.title }}"
+      />
+    </figure>
+  </div>
+</div>
+<ng-scrollbar style="height: 50%">
+  <div class="home-bottom">
+    <div class="galerie2" fxLayout="row">
+      <figure *ngFor="let onebook of booksList">
+        <img 
+          [attr.data-isbnvalue]="onebook?.isbn"
+          (click)="openBook(onebook?.isbn)"
+          src="{{ onebook?.image }}"
+          alt="{{ onebook?.title }}"
+        />
+        <span></span>
+      </figure>
+    </div>
+  </div>
+</ng-scrollbar>

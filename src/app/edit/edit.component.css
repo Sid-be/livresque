@@ -1,0 +1,102 @@
+:host{
+    width:100%;
+
+      padding-top: 2em;
+ 
+}
+
+.couv{
+  display:flex;
+  flex-direction: column;
+  width:50%;
+  margin:10px;
+ 
+  background-color: rgba(0,0,0,.04);
+
+    
+}
+.action-buttons{
+  display:flex;
+}
+.couv img {
+  margin:0 auto;
+  display:block;
+  width: 60%;
+}
+.infos{
+  width:50%
+}
+
+.resume{
+  width: 100%;
+}
+.button{
+  display:block;
+  position: relative;
+border:none;
+outline:none;
+  
+margin:0 auto;
+  height:fit-content;
+  background-color:#fca72c;
+  color:azure;
+  padding:5px 10px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  overflow: hidden;
+  
+}
+.mat-form-field {
+  width:100%
+}
+.button:after {
+  content: "";
+  background: hsl(46, 73%, 75%);
+  display: block;
+  position: absolute;
+  padding-top: 120%;
+  padding-left: 120%;
+  margin-left: -20px!important;
+  margin-top: -100%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+.rating label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    cursor: pointer;
+  }
+  ngb-rating{
+    font-size: 2em;
+    color:#fca72c;
+  }
+  .fiche{
+    display:flex;
+  }
+  .show{
+    display:block;
+
+  }
+  .hide{
+display:none
+  }
+  .isbn{
+    margin-left: 10px;
+  }
+  .mat-form{
+    width:100%
+  }
+  ::ng-deep .mat-form-field-underline {
+    background-color: #fca72c;
+  }
+  

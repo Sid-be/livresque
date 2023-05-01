@@ -1,0 +1,22 @@
+
+export interface book  {
+    publisher: string;
+    synopsis: string;
+    language: string;
+    image: string;
+    title_long: string;
+    edition: string;
+    dimensions: string;
+    pages: 112;
+    date_published: string,
+    subjects: string[];
+    authors: string[];
+    title: string;
+    isbn13: string;
+  
+    binding: string,
+    isbn: string;
+    isbn10: string;
+
+
+}

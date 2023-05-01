@@ -1,0 +1,124 @@
+
+.wrapper{
+    display:flex;
+    height:100%;flex-direction: column;
+    
+        position:relative;
+     
+        margin:0 auto;
+       border-radius:20px;
+       padding-bottom:30px;
+        width:80vw;
+        min-height: 80vh;
+        background: -webkit-linear-gradient(87deg, rgb(224, 234, 231) 0%, rgb(245, 244, 237) 100%);
+background: -o-linear-gradient(87deg, rgb(224, 234, 231) 0%, rgb(245, 244, 237) 100%);
+background: -ms-linear-gradient(87deg, rgb(224, 234, 231) 0%, rgb(245, 244, 237) 100%);
+background: -moz-linear-gradient(87deg, rgb(224, 234, 231) 0%, rgb(245, 244, 237) 100%);
+background: linear-gradient(3deg, rgb(224, 234, 231) 0%, rgb(245, 244, 237) 100%);
+
+        
+ 
+
+}
+.nav-header{
+    display:flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0 2em;
+
+}
+.logo img{
+    margin-right: 10px;
+    height: 70px;
+    width: 80px;
+}
+
+.logo{
+    
+    display: flex;
+    margin-top: 1em;
+    margin-right: 1em;
+    font-size: 0.8em;;
+}
+.user{
+    display: flex;
+    align-items: center;
+}
+.user img{
+    margin: right 0.5em;
+    width:50px;
+}
+.burger-menu svg{
+
+display:block;
+}
+.wrap-body{
+    display: flex;
+   flex:1;
+}
+.container{
+
+    display:flex;
+    flex-direction: row;
+    margin-top:10px;
+    
+    width:80%;
+    background: -webkit-rgb(234, 241, 239);
+background: -o-rgb(234, 241, 239);
+background: -ms-rgb(234, 241, 239);
+background: -moz-rgb(234, 241, 239);
+background: rgb(234, 241, 239);
+    border-radius:20px;
+    margin-right:1em;
+}
+app-home{
+    width:100%;
+}
+ul{ margin:0;
+    padding:0;
+    margin-top:10px;
+
+    display: flex;
+   
+    list-style: none;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+
+}
+.nav-icon{
+    width:30px;
+    vertical-align: bottom;
+}
+a{
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 1em;
+    text-decoration: none;
+    font-size: 1.2em;
+    color :#28353c;
+    
+  
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+a:hover {
+
+    background: #fcf7f5;
+    transition: background-color .5s;
+}
+
+.hidden { 
+    display : none;
+}
+
+.active-link{
+    
+    background: #fcf7f5;
+}
+lord_icon{
+    display:inline-block;
+}
