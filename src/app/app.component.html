@@ -4,7 +4,60 @@
   <div class="nav-header" fxLayoutAlign="space-between baseline">
 <div class="burger-menu"  (click)="menuState?onListItemMouseEnter():onListItemMouseLeave()" fxShow="true" fxHide.gt-sm fxLayoutAlign="start"><svg width="3.5em" height="3.5em" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7C4 6.44771 4.44772 6 5 6H24C24.5523 6 25 6.44771 25 7C25 7.55229 24.5523 8 24 8H5C4.44772 8 4 7.55229 4 7Z" fill="#28353c"/><path d="M4 13.9998C4 13.4475 4.44772 12.9997 5 12.9997L16 13C16.5523 13 17 13.4477 17 14C17 14.5523 16.5523 15 16 15L5 14.9998C4.44772 14.9998 4 14.552 4 13.9998Z" fill="#28353c"/><path d="M5 19.9998C4.44772 19.9998 4 20.4475 4 20.9998C4 21.552 4.44772 21.9997 5 21.9997H22C22.5523 21.9997 23 21.552 23 20.9998C23 20.4475 22.5523 19.9998 22 19.9998H5Z" fill="#28353c"/></svg></div>
 <div class="logo" routerLink="/home" ><img src="assets/logo2.png" alt=""><h1>Livresque</h1></div>
-<div class="user"><img src="assets/account.webp" alt="" ><span>User</span> </div>
+<div class="user"><h5 class="uxg-h5">User Profile</h5>
+  <div class="user-menu">
+    
+    <mat-menu #menu="matMenu" class="uxg-user-profile">
+        <div class="uxg-menu-header">
+            <div class="uxg-avatar-title-block">
+                <div class="uxg-avatar"></div>
+                <h6 class="uxg-h6"></h6>
+                <span class="uxg-caption"></span>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <ng-container *ngIf="!isLoggedIn" >
+        <div class="displayTable">
+          <div class="displayTableCell">
+            <div class="authBlock">
+              <h3>S'inscrire</h3>
+              <div class="formGroup">
+                <input type="email" class="formControl" placeholder="Adresse email" [(ngModel)]="email" name="email" required>
+              </div>
+              <div class="formGroup">
+                <input type="email" class="formControl" placeholder="Pseudo" [(ngModel)]="name" name="name" required>
+              </div>
+              <div class="formGroup">
+                <input type="password" class="formControl" placeholder="Mot de passe" [(ngModel)]="password" name="password" required>
+              </div>
+              <div class="formGroup">
+                <input type="password" class="formControl" placeholder="Confirmer le mot de passe" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+              </div>
+              <div class="formGroup">
+                <button type="button" class="btn btnPrimary" (click)="register()">S'inscrire</button>
+              </div>
+              <div class="formGroup">
+                <span class="or"><span class="orInner">Ou</span></span>
+              </div>
+              <!-- Continue with Google -->
+             
+            </div>
+            <div class="redirectToLogin">
+              <span>Déjà inscrit? <a routerLink="/login">Se connecter</a></span>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+        <mat-divider></mat-divider>
+        <div class="uxg-menu-footer">
+            <button mat-flat-button color="primary" dense>
+                <mat-icon>exit_to_app</mat-icon>
+                Logout
+            </button>
+        </div>
+    </mat-menu>
+  </div>
+  <img src="assets/account.webp" alt="" mat-stroked-button [matMenuTriggerFor]="menu" ><span>User</span> </div>
 </div>
   <div class="wrap-nav"fxShow="true" fxHide.lt-md><app-nav-top ></app-nav-top></div>
 

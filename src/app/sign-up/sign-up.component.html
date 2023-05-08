@@ -1,0 +1,30 @@
+<div class="displayTable">
+    <div class="displayTableCell">
+      <div class="authBlock">
+        <h3>S'inscrire</h3>
+        <div class="formGroup">
+          <input type="email" class="formControl" placeholder="Adresse email" [(ngModel)]="email" name="email" required>
+        </div>
+        <div class="formGroup">
+          <input type="email" class="formControl" placeholder="Pseudo" [(ngModel)]="name" name="name" required>
+        </div>
+        <div class="formGroup">
+          <input type="password" class="formControl" placeholder="Mot de passe" [(ngModel)]="password" name="password" required>
+        </div>
+        <div class="formGroup">
+          <input type="password" class="formControl" placeholder="Confirmer le mot de passe" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+        </div>
+        <div class="formGroup">
+          <button type="button" class="btn btnPrimary" (click)="register()">S'inscrire</button>
+        </div>
+        <div class="formGroup">
+          <span class="or"><span class="orInner">Ou</span></span>
+        </div>
+        <!-- Continue with Google -->
+       
+      </div>
+      <div class="redirectToLogin">
+        <span>Déjà inscrit? <a routerLink="/login">Se connecter</a></span>
+      </div>
+    </div>
+  </div>

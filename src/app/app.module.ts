@@ -17,7 +17,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { environment } from '../environments/environment';
+
 import { BooklistComponent } from './booklist/booklist.component';
 import { EditComponent } from './edit/edit.component';
 import { LottieAnimationViewModule } from 'ng-lottie';
@@ -62,6 +62,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { AutoAnimateModule } from '@formkit/auto-animate/angular';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { VerifiyEmailComponent } from './verifiy-email/verifiy-email.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AuthServiceService } from './auth-service.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './interceptor.service';
 
 
 
@@ -117,7 +124,11 @@ const AllMaterialModules=[
     BooklistComponent,
     EditComponent,
     GenreComponent,
-    FavorisComponent
+    FavorisComponent,
+    SignInComponent,
+    SignUpComponent,
+    VerifiyEmailComponent,
+    ForgotPasswordComponent
     
   ],
   imports: [
@@ -136,8 +147,14 @@ const AllMaterialModules=[
    
   ],
   exports: [AllMaterialModules],
-  providers: [BooksService,
-    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'}],
+  providers: [BooksService, AuthServiceService,
+    {provide: MAT_DATE_LOCALE,useValue: 'fr-FR',},
+    {provide:HTTP_INTERCEPTORS, 
+    useClass: InterceptorService,
+    multi: true
+  }
+  ],
+    
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

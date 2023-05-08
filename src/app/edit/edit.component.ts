@@ -35,11 +35,13 @@ export class EditComponent implements OnInit {
     private router: Router,private crudService:CrudService,private books:BooksService) { }
 
   ngOnInit(): void {
- /*    this.id = this.actRoute.snapshot.paramMap.get('id');
-    this.crudService.GetBook(this.id).subscribe((data)=>{this.newBook=data;this.starRating=this.newBook?.book?.rate;  if(this.newBook?.book?.favoris){
-      this.favoris.setValue(true)
-     } */
-     /* }); */
+    this.id = this.actRoute.snapshot.paramMap.get('id');
+    this.crudService.GetOneBook(this.id).subscribe((data)=>{this.newBook=data;  if(data.favoris){
+      this.favoris.setValue(true);
+      
+     } 
+     console.log(data)
+      });
  
     
   
@@ -57,24 +59,37 @@ export class EditComponent implements OnInit {
       console.log("update success ");
  
  } */
- /* onUpdate(){
+ onUpdate(){
   
-   this.newBook.book.rate=this.starRating
-   this.newBook.book.favoris=this.favoris.value;
+   
+   this.newBook.favoris=this.favoris.value;
    if(this.synopsis.touched){
-   this.newBook.book.synopsis=this.synopsis.value
+   this.newBook.synopsis=this.synopsis.value
   }
-   this.imageSrc=this.newBook.book.image
-   this.newBook.updatedAt=this.crudService.getTimestamp()
+   this.imageSrc=this.newBook.image
+  
+   console.log(this.newBook)
+   this.crudService.UpdateBook(this.newBook, this.id).subscribe(
+    () => {
+      console.log("Update success");
+    },
+    (error) => {
+      console.error(error);
+    }
+  );
    
-       this.crudService.setUserBook(this.newBook);
-      console.log("update success ");
-   
- } */
-/*  onDelete(id){
-this.crudService.DeleteBook(id);
+ }
+ onDelete(id){
+this.crudService.DeleteBook(id).subscribe(
+  () => {
+    console.log("Update success");
+  },
+  (error) => {
+    console.error(error);
+  }
+);
 
- } */
+ }
  getnewImage():Observable<any>|any{
   if(this.newBook != null) {
     return of(this.newBook)
@@ -82,7 +97,7 @@ this.crudService.DeleteBook(id);
 }
 onSubmit(){
  
-   this.newBook.book.image=this.image.value;
+   this.newBook.image=this.image.value;
 }
 
 

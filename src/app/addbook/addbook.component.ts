@@ -111,21 +111,22 @@ export class AddbookComponent implements OnInit {
    console.log(this.resume)
    if(this.resume){
     console.log(this.resume.title)
-  livre.title= this.resume? this.resume.title:'';
+  livre.title= this.resume? this.resume.title:this.title.value;
   livre.isbn=this.isbnID;
-  livre.publisher=this.resume.publisher;
+  livre.publisher=this.resume.publisher?this.resume.title:this.publisher.value;
   livre.publishedDate=this.resume.publishedDate;
   livre.image=this.imageSrc
   livre.synopsis=this.resume.description
    livre.authors=this.resume.authors;
    livre.pages=this.resume.pageCount;
    livre.langage=this.resume.language;
-   livre.favoris=false;
+   livre.favoris=this.favoris.value;
    livre.genre=this.genres.value
   /*  if(this.genre){
    console.log(this.genre)
    livre.genre=this.genre  
   } */
+  console.log(livre)
     this.crudService.setUserBook(livre);
 
     console.log('succès!!');
@@ -141,8 +142,9 @@ export class AddbookComponent implements OnInit {
    livre.authors=this.authors.value;
    livre.pages=200;
    livre.langage='fr';
-   livre.favoris=false;
-   livre.genre=this.genres.value
+   livre.favoris=this.favoris.value;
+   livre.genre=this.genres.value;
+   console.log(livre)
    this.crudService.setUserBook(livre);
   }
   

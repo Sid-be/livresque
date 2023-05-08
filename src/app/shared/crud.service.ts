@@ -25,6 +25,7 @@ export class CrudService {
   {
    
   }
+  
 
   setUserBook(book: Book|any) {
           this.http.post<Book>(
@@ -35,51 +36,27 @@ export class CrudService {
         });
       
   }
-   GetLastThree() : Observable<any>{
+   GetBooks() : Observable<any>{
     
-      return this.http.get(`${this.apiUrl}/books/latest`);
+      return this.http.get(`${this.apiUrl}/book`);
   }
-   
-   
-  /* GetGenre(id) {
-    let snapshot = this.afs
-      .collection('books', (ref) => ref.where('genre','==', "science-fiction"))
-      .snapshotChanges()
-      .pipe(
-        map((changes) =>
-          changes.map((c) => ({ info: c.payload.doc.data()['book'] }))
-        )
-      );
-      console.log(snapshot)
-      return snapshot;
-    }
-  GetBookList() {
-    let snapshot = this.afs
-      .collection('books')
-      .snapshotChanges()
-      .pipe(
-        map((changes) =>
-          changes.map((c) => ({ info: c.payload.doc.data()['book'] }))
-        )
-      );
-      this.books=snapshot;
-    return snapshot;
-  }
+  GetOneBook(id) : Observable<Book>{
+    
+    return this.http.get<Book>(`${this.apiUrl}/book/${id}`);
+}
+UpdateBook(newBook:Book,isbn) : Observable<any>{
+    
+  
+  return this.http.put<Book>(`${this.apiUrl}/book/${isbn}`,
+  newBook);
+}
+DeleteBook(isbn) : Observable<any>{
+    
+  
+  return this.http.delete(`${this.apiUrl}/book/${isbn}`);
+}
  
-  DeleteBook(id) {
-    const bookRef = this.afs.collection('books');
-    bookRef.doc(id).delete();
-  }
-  GetBook(id: string) {
-    return this.afs.collection('books').doc(id).valueChanges();
-    //return this.bookRef;
-    
-  }
-  UpdateBook(book: Book, id) {
-    const bookRef = this.afs
-      
-      .collection('book')
-      .doc(id)
-      .update(book);
-  } */
+   
+   
+  
 }

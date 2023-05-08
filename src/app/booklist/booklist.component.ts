@@ -24,7 +24,7 @@ export class BooklistComponent implements OnInit {
    } 
   
   getLatestBooks() {
-    this.books.GetLastThree().subscribe(
+    this.books.GetBooks().subscribe(
       data => this.booksList = data,
       error => console.error(error)
     );

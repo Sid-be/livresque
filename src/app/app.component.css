@@ -24,7 +24,7 @@ background: linear-gradient(3deg, rgb(224, 234, 231) 0%, rgb(245, 244, 237) 100%
     display:flex;
     justify-content: space-between;
     align-items: baseline;
-    margin: 0 2em;
+    margin: 0 0.3em;
 
 }
 .logo img{

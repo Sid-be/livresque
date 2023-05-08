@@ -32,7 +32,7 @@ id:any
     this.router.navigate(['edit', this.id]);
   }
   getLatestBooks() {
-    this.books.GetLastThree().subscribe(
+    this.books.GetBooks().subscribe(
       {next:data => {this.booksList = data;
         console.log(this.booksList)
       },

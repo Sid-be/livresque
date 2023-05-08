@@ -7,13 +7,15 @@
   </div>
 
   <div class="galerie" fxLayout="row">
-    <figure *ngFor="let book of booksList" fxFlex.gt-sm="16.66%" fxFlex.lt-md="33.33%">
+ <ng-container *ngFor="let book of booksList;let i = index;" >
+    <figure *ngIf="i < 3 && book.userbooks.favoris" fxFlex.gt-sm="16.66%" fxFlex.lt-md="33.33%">
       <img 
         (click)="openBook(book?.isbn)"
         src="{{ book?.image }}"
         alt="{{ book?.title }}"
       />
     </figure>
+  </ng-container>
   </div>
 </div>
 <ng-scrollbar style="height: 50%">

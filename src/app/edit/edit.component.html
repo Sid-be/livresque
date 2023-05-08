@@ -2,7 +2,7 @@
   
        
         <div class="fiche">
-    <div class="couv"><img src={{newBook?.book?.image}} alt=""><div   class="validate"><button class="button" (click)="ShowInput()">Modifier la couverture</button></div><form >
+    <div class="couv"><img [src]=newBook?.image alt=""><div   class="validate"><button class="button" (click)="ShowInput()">Modifier la couverture</button></div><form >
       <mat-form-field [ngClass]="[btnStyle]" appearance="fill">
         <mat-label>Adresse de la nouvelle image</mat-label>
         <input matInput placeholder="" [formControl]="image">
@@ -14,26 +14,26 @@
     
     
     <div class="infos">
-        <div class="title">{{newBook?.book?.title}}</div>
-        <div class="auteur"><b>Auteur: </b>{{newBook?.book?.authors[0]}}</div>
+        <div class="title">{{newBook?.title}}</div>
+        <div class="auteur"><b>Auteur: </b>{{newBook?.authors[0].name}}</div>
       
-          <!--<div class="star"><ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating></div>-->
+          <!-- <div class="star"><ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating></div> -->
           <p>
             <mat-checkbox [formControl]="favoris" id="favoris"><b> Ajouter aux favoris</b></mat-checkbox>
           </p>
           <div class="resume"> 
            
-          <span><b>Résumé: <p *ngIf="edit">{{newBook?.book?.synopsis}}</p></b></span><div *ngIf="!edit" class="mat-form"> <mat-form-field  appearance="fill">
+          <span><b>Résumé: <p *ngIf="edit">{{newBook?.synopsis}}</p></b></span><div *ngIf="!edit" class="mat-form"> <mat-form-field  appearance="fill">
 
             <mat-label>Ajouter un résumé</mat-label>
-            <textarea matInput placeholder="">{{newBook?.book?.synopsis}}</textarea>
+            <textarea matInput placeholder="">{{newBook?.synopsis}}</textarea>
           </mat-form-field></div></div>
-          <div class="editeur"><b>Editeur: </b>{{newBook?.book?.publisher}}</div>
-          <div class="date-publi"><b>Date de publication: </b>{{newBook?.book.date_published}}</div>
-          <div class="isbn-n"><b>ISBN: </b>{{newBook?.book?.isbn}}</div>
-          <div class="langue"><b>Langue:</b>{{newBook?.book?.language}}</div>
+          <div class="editeur"><b>Editeur: </b>{{newBook?.publisher.name}}</div>
+          <div class="date-publi"><b>Date de publication: </b>{{newBook?.publishedDate | date:'dd-MM-yyyy'}}</div>
+          <div class="isbn-n"><b>ISBN: </b>{{newBook?.isbn}}</div>
+          <div class="langue"><b>Langue:</b>{{newBook?.language}}</div>
           <div class="action-buttons">
-          <!-- <button  class="button" (click)="onUpdate()">Modifier</button>   <button  class="button" (click)="onDelete(id)">Supprimer</button></div> -->
+          <button  class="button" (click)="onUpdate()">Modifier</button>   <button  class="button" (click)="onDelete(newBook?.isbn)">Supprimer</button></div>
       </div>
   
     </div>
