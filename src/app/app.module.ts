@@ -69,6 +69,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AuthServiceService } from './auth-service.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './interceptor.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -128,7 +129,8 @@ const AllMaterialModules=[
     SignInComponent,
     SignUpComponent,
     VerifiyEmailComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    DashboardComponent
     
   ],
   imports: [

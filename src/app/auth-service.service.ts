@@ -39,6 +39,15 @@ export class AuthServiceService {
     localStorage.removeItem('access_token');
     
   }
+  getAllUsers():Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}`).pipe(
+      map(response => {
+        // Sauvegarde du token d'authentification dans le stockage local
+       
+        return response;
+      })
+    );
+  }
 
   isAuthenticated(): boolean {
     // Vérification de la présence du token d'authentification dans le stockage local

@@ -9,6 +9,7 @@ import { GenreComponent } from './genre/genre.component';
 import { FavorisComponent } from './favoris/favoris.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
  
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'ajout', component: AddbookComponent },
   { path: 'login', component: SignInComponent },
   { path: 'register', component: SignUpComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'edit/:id', component: EditComponent },
   { path: 'genre/:id', component: GenreComponent },
   { path: 'favoris', component: FavorisComponent },

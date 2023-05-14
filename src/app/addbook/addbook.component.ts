@@ -43,7 +43,9 @@ export class AddbookComponent implements OnInit {
   
  
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+   
+  }
   isbnForm = new FormControl('', [
     Validators.required,
     Validators.pattern('/^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$/'),
@@ -93,8 +95,11 @@ export class AddbookComponent implements OnInit {
   getLivre() {
     
     this.books.getIsbnDb(this.isbnID).subscribe((result)=>{
-       // Convertir la réponse en URL blob
-      this.imageSrc=result
+    
+     console.log(result)
+      
+        this.imageSrc=result
+   
      });
     
     this.books.getResume(this.isbnID).subscribe({
@@ -113,10 +118,10 @@ export class AddbookComponent implements OnInit {
     console.log(this.resume.title)
   livre.title= this.resume? this.resume.title:this.title.value;
   livre.isbn=this.isbnID;
-  livre.publisher=this.resume.publisher?this.resume.title:this.publisher.value;
+  livre.publisher=this.resume?this.resume.publisher:this.publisher.value;
   livre.publishedDate=this.resume.publishedDate;
   livre.image=this.imageSrc
-  livre.synopsis=this.resume.description
+  livre.synopsis=this.resume?this.resume.description:this.synopsis.value
    livre.authors=this.resume.authors;
    livre.pages=this.resume.pageCount;
    livre.langage=this.resume.language;
@@ -126,10 +131,10 @@ export class AddbookComponent implements OnInit {
    console.log(this.genre)
    livre.genre=this.genre  
   } */
-  console.log(livre)
+ 
     this.crudService.setUserBook(livre);
 
-    console.log('succès!!');
+    
    
   }
   else{
@@ -144,7 +149,7 @@ export class AddbookComponent implements OnInit {
    livre.langage='fr';
    livre.favoris=this.favoris.value;
    livre.genre=this.genres.value;
-   console.log(livre)
+  
    this.crudService.setUserBook(livre);
   }
   
