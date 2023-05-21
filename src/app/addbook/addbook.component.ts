@@ -1,19 +1,19 @@
 
 import { Component, OnInit } from '@angular/core';
-import { BooksService } from '../books.service';
+import { BooksService } from '../shared/books.service';
 import { Book } from '../livres';
 import { CrudService } from '../shared/crud.service';
-import { ElementRef, AfterViewInit, ViewChild } from '@angular/core';
-import { fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
+import { HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { of } from 'rxjs';
+import { of ,map,Subscription,skip} from 'rxjs';
 import {
   FormControl,
   FormGroup,
   FormBuilder,
   Validators,
 } from '@angular/forms';
+import { HotToastService } from '@ngneat/hot-toast';
+
 
 @Component({
   selector: 'app-addbook',
@@ -21,10 +21,12 @@ import {
   styleUrls: ['./addbook.component.css'],
 })
 export class AddbookComponent implements OnInit {
+  private notificationSubscription: Subscription;
   constructor(
     private books: BooksService,
     private formBuilder: FormBuilder,
-    private crudService: CrudService
+    private crudService: CrudService,
+    private toast: HotToastService
   ) {
    
    
@@ -113,9 +115,9 @@ export class AddbookComponent implements OnInit {
   }
   submitBookData() {
     const livre = new Book()
-   console.log(this.resume)
+  
    if(this.resume){
-    console.log(this.resume.title)
+   
   livre.title= this.resume? this.resume.title:this.title.value;
   livre.isbn=this.isbnID;
   livre.publisher=this.resume?this.resume.publisher:this.publisher.value;
@@ -132,7 +134,14 @@ export class AddbookComponent implements OnInit {
    livre.genre=this.genre  
   } */
  
-    this.crudService.setUserBook(livre);
+this.crudService.setUserBook(livre)
+    
+  
+this.crudService.notification$.pipe(skip(1)).subscribe((message) => {
+ 
+  this.toast.info(message)
+
+  })
 
     
    
@@ -150,10 +159,12 @@ export class AddbookComponent implements OnInit {
    livre.favoris=this.favoris.value;
    livre.genre=this.genres.value;
   
-   this.crudService.setUserBook(livre);
-  }
+this.crudService.setUserBook(livre)
+
+
   
 }
+  }
  // getBookin() {
    // this.books.getIsbnDb(this.isbnID['ISBN']).subscribe((data) => {
     //  console.log(data);

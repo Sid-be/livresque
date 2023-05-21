@@ -8,7 +8,7 @@
 
   <div class="galerie" fxLayout="row">
  <ng-container *ngFor="let book of booksList;let i = index;" >
-    <figure *ngIf="i < 3 && book.userbooks.favoris" fxFlex.gt-sm="16.66%" fxFlex.lt-md="33.33%">
+    <figure *ngIf="i < 3 " fxFlex.gt-sm="16.66%" fxFlex.lt-md="33.33%">
       <img 
         (click)="openBook(book?.isbn)"
         src="{{ book?.image }}"

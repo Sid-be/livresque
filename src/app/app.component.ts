@@ -1,11 +1,11 @@
-import { Component,OnInit, ElementRef, AfterViewInit,ViewChild } from '@angular/core';
+import { Component,OnInit, ElementRef, AfterViewInit,ViewChild, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BooksService } from './books.service';
+import { BooksService } from './shared/books.service';
 import { Book } from './livres';
 import { map,tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { state,style,trigger,animate,transition  } from '@angular/animations';
-import { AuthServiceService } from './auth-service.service';
+import { AuthServiceService } from './shared/auth-service.service';
 import { MatMenuTrigger } from '@angular/material/menu';
 
 import { switchMap, of, catchError } from 'rxjs';
@@ -48,6 +48,7 @@ import { animation } from '@angular/animations';
 export class AppComponent implements AfterViewInit {
   @ViewChild(MatMenuTrigger) menuTrigger: MatMenuTrigger;
   @ViewChild('menuButton') menuButton: ElementRef;
+  @ViewChild('matMenu') matMenu: ElementRef;
   email: string;
   name:string;
   password: string;
@@ -59,15 +60,15 @@ export class AppComponent implements AfterViewInit {
       this.menuButton.nativeElement.focus();
     });
   }
+  @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
-    if (!this.menuTrigger.menuOpen && !this.menuButton.nativeElement.contains(event.target)) {
-      return;
-    }
-
-    if (!this.eref.nativeElement.contains(event.target)) {
-      this.menuTrigger.closeMenu();
+    if (this.menuTrigger && this.menuTrigger.menuOpen && !this.matMenu.nativeElement.contains(event.target)) {
+      this.menuTrigger.toggleMenu();
     }
   }
+
+  // ...
+
   
   listItemAnimationState: 'default' | 'active' = 'active';
   constructor( public books:BooksService,private router: Router,private authService: AuthServiceService,private eref: ElementRef){
@@ -95,6 +96,17 @@ register(): void {
       error => {
         console.log(error);
         alert('Une erreur s\'est produite lors de l\'inscription');
+      }
+    );
+}
+login(): void {
+  this.authService.login(this.email, this.password)
+    .subscribe(
+      response => {
+        console.log(response.user_id)
+      },
+      error => {
+        // handle error
       }
     );
 }

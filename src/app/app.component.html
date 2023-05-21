@@ -24,17 +24,13 @@
               <div class="formGroup">
                 <input type="email" class="formControl" placeholder="Adresse email" [(ngModel)]="email" name="email" required>
               </div>
-              <div class="formGroup">
-                <input type="email" class="formControl" placeholder="Pseudo" [(ngModel)]="name" name="name" required>
-              </div>
+              
               <div class="formGroup">
                 <input type="password" class="formControl" placeholder="Mot de passe" [(ngModel)]="password" name="password" required>
               </div>
+              
               <div class="formGroup">
-                <input type="password" class="formControl" placeholder="Confirmer le mot de passe" [(ngModel)]="confirmPassword" name="confirmPassword" required>
-              </div>
-              <div class="formGroup">
-                <button type="button" class="btn btnPrimary" (click)="register()">S'inscrire</button>
+                <button type="button" class="btn btnPrimary" (click)="login()">S'inscrire</button>
               </div>
               <div class="formGroup">
                 <span class="or"><span class="orInner">Ou</span></span>
@@ -43,14 +39,14 @@
              
             </div>
             <div class="redirectToLogin">
-              <span>Déjà inscrit? <a routerLink="/login">Se connecter</a></span>
+              <span>Déjà inscrit? <a routerLink="/register">Se connecter</a></span>
             </div>
           </div>
         </div>
       </ng-container>
         <mat-divider></mat-divider>
         <div class="uxg-menu-footer">
-            <button mat-flat-button color="primary" dense>
+            <button *ngIf="isLoggedIn" mat-flat-button color="primary" dense (click)="logout()">
                 <mat-icon>exit_to_app</mat-icon>
                 Logout
             </button>

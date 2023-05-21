@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../shared/crud.service';
-import { BooksService } from '../books.service';
+import { BooksService } from '../shared/books.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 

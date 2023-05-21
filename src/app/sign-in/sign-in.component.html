@@ -1,20 +1,19 @@
-<div class="displayTable">
-    <div class="displayTableCell">
-      <div class="authBlock">
-        <h3>Se connecter</h3>
-        <div class="formGroup">
-          <input type="email" class="formControl" placeholder="Email" [(ngModel)]="email" name="email" required>
+
+  <div class="dropdown">
+    <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Connexion
+    </button>
+    <div class="dropdown-menu">
+      <form (ngSubmit)="login()">
+        <div class="form-group">
+          <label for="email">Nom d'utilisateur</label>
+          <input type="text" class="form-control" id="username" [(ngModel)]="email" name="email" required>
         </div>
-        <div class="formGroup">
-          <input type="password" class="formControl" placeholder="Mot de passe" [(ngModel)]="password" name="password" required>
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" required>
         </div>
-        <div class="formGroup">
-          <button type="button" class="btn btnPrimary" (click)="login()">Se connecter</button>
-        </div>
-      </div>
-      <div class="redirectToSignUp">
-        <span>Pas encore inscrit?</span>
-        <a routerLink="/register">S'inscrire</a>
-      </div>
+        <button type="submit" class="btn btn-primary" (click)="login()">Se connecter</button>
+      </form>
     </div>
   </div>

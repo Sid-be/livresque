@@ -1,5 +1,5 @@
 import { Book } from './../livres';
-import { BooksService } from './../books.service';
+import { BooksService } from '../shared/books.service';
 import { DialogComponent } from './../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';

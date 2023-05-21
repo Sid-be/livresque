@@ -1,4 +1,4 @@
-import { BooksService } from './books.service';
+import { BooksService } from './shared/books.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -66,10 +66,12 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { VerifiyEmailComponent } from './verifiy-email/verifiy-email.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { AuthServiceService } from './auth-service.service';
+import { AuthServiceService } from './shared/auth-service.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { InterceptorService } from './interceptor.service';
+import { InterceptorService } from './shared/interceptor.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HotToastModule } from '@ngneat/hot-toast';
+
 
 
 
@@ -139,7 +141,8 @@ const AllMaterialModules=[
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    LottieAnimationViewModule.forRoot(),
+    HotToastModule.forRoot(),
+   
     FlexLayoutModule,
     AllMaterialModules,
    

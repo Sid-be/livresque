@@ -27,7 +27,7 @@
               "src/assets"
             ],
             "styles": [
-             
+              "node_modules/@ngneat/hot-toast/src/styles/styles.css",
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
@@ -35,7 +35,6 @@
           },
           "configurations": {
             "production": {
-              
               "budgets": [
                 {
                   "type": "initial",
@@ -63,7 +62,6 @@
               },
               "outputHashing": "all"
             },
-            
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -111,9 +109,7 @@
             "scripts": []
           }
         }
-        
       }
     }
   }
-  
 }

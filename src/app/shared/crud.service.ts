@@ -1,15 +1,20 @@
 import { Book } from './../livres';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, BehaviorSubject } from 'rxjs';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgZone, OnInit } from '@angular/core';
+import { HotToastService } from '@ngneat/hot-toast';
+
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class CrudService {
+  private notificationSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+  public notification$ = this.notificationSubject.asObservable();
   userData: any; // Save logged in user data
   uid: any;
   bookRef: any;
@@ -20,7 +25,8 @@ export class CrudService {
     
 
     public router: Router,
-    public ngZone: NgZone 
+    public ngZone: NgZone,
+    private toast: HotToastService
   ) 
   {
    
@@ -28,12 +34,26 @@ export class CrudService {
   
 
   setUserBook(book: Book|any) {
-          this.http.post<Book>(
+         return this.http.post<Book>(
         "http://localhost:3000/api/book",
-        book)
-        .subscribe(response => {
-          console.log(response);
-        });
+        book,{observe:'response'})
+        .subscribe(
+          (response: HttpResponse<any>) => {
+            console.log(response);
+            if (response.status === 201) {
+              this.toast.success('success');
+            } else if (response.status === 400) {
+              this.toast.error('error');
+            } else if (response.status === 404) {
+              this.toast.warning('Avertissement');
+            } else {
+              this.toast.info('info');
+            }
+          },
+          (error) => {
+            this.toast.error('error');
+          }
+        );
       
   }
    GetBooks() : Observable<any>{

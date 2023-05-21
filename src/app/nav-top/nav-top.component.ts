@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BooksService } from '../books.service';
+import { BooksService } from '../shared/books.service';
 
 @Component({
   selector: 'app-nav-top',
