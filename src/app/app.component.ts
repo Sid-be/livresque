@@ -46,26 +46,23 @@ import { animation } from '@angular/animations';
 })
 
 export class AppComponent implements AfterViewInit {
-  @ViewChild(MatMenuTrigger) menuTrigger: MatMenuTrigger;
-  @ViewChild('menuButton') menuButton: ElementRef;
-  @ViewChild('matMenu') matMenu: ElementRef;
-  email: string;
+  @ViewChild(MatMenuTrigger) menuTrigger!: MatMenuTrigger;
+  email: string="";
   name:string;
   password: string;
   confirmPassword: string;
   menuState:boolean=true;
   livre:Book;
+  isDropdownOpen = false;
   ngAfterViewInit() {
-    this.menuTrigger.menuClosed.subscribe(() => {
-      this.menuButton.nativeElement.focus();
-    });
+
   }
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    if (this.menuTrigger && this.menuTrigger.menuOpen && !this.matMenu.nativeElement.contains(event.target)) {
-      this.menuTrigger.toggleMenu();
+/*   @HostListener('document:click', ['$event'])
+  onOutsideClick(event: Event) {
+    if (!this.eref.nativeElement.contains(event.target)) {
+      this.closeDropdown();
     }
-  }
+  } */
 
   // ...
 
@@ -74,6 +71,15 @@ export class AppComponent implements AfterViewInit {
   constructor( public books:BooksService,private router: Router,private authService: AuthServiceService,private eref: ElementRef){
     
   
+  }
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+  stopPropagation(event: Event) {
+    event.stopPropagation();
+  }
+  closeDropdown() {
+    this.isDropdownOpen = false;
   }
 
   ngOnInit() {
@@ -100,6 +106,8 @@ register(): void {
     );
 }
 login(): void {
+ 
+    console.log(this.email)
   this.authService.login(this.email, this.password)
     .subscribe(
       response => {
@@ -109,6 +117,7 @@ login(): void {
         // handle error
       }
     );
+    this.menuTrigger.closeMenu();
 }
 isLoggedIn=this.authService.isAuthenticated();
 logout(){

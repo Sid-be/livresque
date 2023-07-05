@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../shared/crud.service';
-import { Book } from '../livres';
+import { AuthServiceService } from '../shared/auth-service.service';
 import { Router } from '@angular/router';
-import { HostBinding } from '@angular/core';
-import { interval, of } from 'rxjs';
-import { concatMap, mergeMap, delay, exhaustMap, map, switchMap, take, tap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+
 
 
 @Component({
@@ -16,15 +15,22 @@ export class HomeComponent implements OnInit {
 lastBook:any
 booksList:any
 id:any
-  constructor(private books:CrudService,private router: Router) { }
+currentUser: string | null;
+currentUserSubscription: Subscription;
+  constructor(private books:CrudService,private auth:AuthServiceService,private router: Router) { }
 
  
   ngOnInit() {
     this.getLatestBooks();
+    this.auth.getCurrentUser().subscribe(()=>
+      this.getLatestBooks() )
+   
    
   }
 
-
+  ngOnDestroy(): void {
+    this.currentUserSubscription.unsubscribe();
+  }
 
  
   openBook(id){

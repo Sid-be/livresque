@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -9,14 +9,21 @@ import { map } from 'rxjs/operators';
 })
 export class AuthServiceService {
   private baseUrl = 'http://localhost:3000/auth';
-
+private currentUserSubject:BehaviorSubject<string|null>=new BehaviorSubject<string | null>(null);
   constructor(private http: HttpClient) {}
+  setCurrentUser(user:string|null){
+    this.currentUserSubject.next(user)
+  }
+    getCurrentUser(): Observable<string | null> {
+    return this.currentUserSubject.asObservable();
+  }
 
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/login`, { email, password }).pipe(
       map(response => {
         // Sauvegarde du token d'authentification dans le stockage local
         localStorage.setItem('access_token', response.token);
+        this.setCurrentUser(email);
       
         return response;
       })

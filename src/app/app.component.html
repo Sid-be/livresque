@@ -6,18 +6,18 @@
 <div class="logo" routerLink="/home" ><img src="assets/logo2.png" alt=""><h1>Livresque</h1></div>
 <div class="user"><h5 class="uxg-h5">User Profile</h5>
   <div class="user-menu">
-    
-    <mat-menu #menu="matMenu" class="uxg-user-profile">
+   
+    <mat-menu #menu="matMenu" class="uxg-user-profile" [matAutoclose]="false" >
         <div class="uxg-menu-header">
             <div class="uxg-avatar-title-block">
-                <div class="uxg-avatar"></div>
+                <div class="uxg-avatar"><img style="width:100px;"src="assets/account.webp" alt=""  ><span>User</span></div>
                 <h6 class="uxg-h6"></h6>
                 <span class="uxg-caption"></span>
             </div>
         </div>
         <mat-divider></mat-divider>
-        <ng-container *ngIf="!isLoggedIn" >
-        <div class="displayTable">
+        <ng-container  >
+      <!--   <div class="displayTable">
           <div class="displayTableCell">
             <div class="authBlock">
               <h3>S'inscrire</h3>
@@ -35,14 +35,34 @@
               <div class="formGroup">
                 <span class="or"><span class="orInner">Ou</span></span>
               </div>
-              <!-- Continue with Google -->
+              <!-- Continue with Google 
              
             </div>
             <div class="redirectToLogin">
               <span>Déjà inscrit? <a routerLink="/register">Se connecter</a></span>
             </div>
           </div>
+        </div> -->
+        <div class="dropdown" >
+         
+          <div  (click)="stopPropagation($event)">
+            
+            <form (submit)="login()">
+              <!-- Ajoutez ici les champs de votre formulaire de connexion -->
+             
+              <div class="formGroup">
+                <input type="email" class="formControl" placeholder="Adresse email" [(ngModel)]="email" name="email" required>
+              </div>
+              <div class="formGroup">
+                <input type="password" class="formControl" placeholder="Mot de passe" [(ngModel)]="password" name="password" required>
+              </div>
+              <button type="submit" >Se connecter</button>
+           
+            </form>
+          
+          </div>
         </div>
+     
       </ng-container>
         <mat-divider></mat-divider>
         <div class="uxg-menu-footer">
@@ -53,7 +73,7 @@
         </div>
     </mat-menu>
   </div>
-  <img src="assets/account.webp" alt="" mat-stroked-button [matMenuTriggerFor]="menu" ><span>User</span> </div>
+  <img src="assets/account.webp" alt="" mat-stroked-button [matMenuTriggerFor]="menu" > </div>
 </div>
   <div class="wrap-nav"fxShow="true" fxHide.lt-md><app-nav-top ></app-nav-top></div>
 
