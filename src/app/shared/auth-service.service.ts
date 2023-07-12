@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import jwt_decode from 'jwt-decode';
+
 
 
 @Injectable({
@@ -44,6 +46,9 @@ private currentUserSubject:BehaviorSubject<string|null>=new BehaviorSubject<stri
   logout(): void {
     // Suppression du token d'authentification du stockage local
     localStorage.removeItem('access_token');
+    this.setCurrentUser(null);
+    
+ 
     
   }
   getAllUsers():Observable<any>{
@@ -56,8 +61,17 @@ private currentUserSubject:BehaviorSubject<string|null>=new BehaviorSubject<stri
     );
   }
 
-  isAuthenticated(): boolean {
-    // Vérification de la présence du token d'authentification dans le stockage local
-    return localStorage.getItem('access_token') !== null;
-  }
+ isAuthenticated() {
+  const token=localStorage.getItem('access_token');
+  const decodedToken:any=jwt_decode(token);
+  const dateNow=Date.now()/1000
+  if(token && (decodedToken.exp>dateNow)){
+  return true
+}
+return false
+ }
+  //  let auth=false
+ // auth= this.getCurrentUser().subscribe(user=>{user?true:false})
+  //return this.auth
+  //}
 }

@@ -43,11 +43,12 @@
             </div>
           </div>
         </div> -->
-        <div class="dropdown" >
+       
          
           <div  (click)="stopPropagation($event)">
             
-            <form (submit)="login()">
+            <form (submit)="login()" *ngIf="!isLoggedIn">
+              <div>{{isLoggedIn}}</div>
               <!-- Ajoutez ici les champs de votre formulaire de connexion -->
              
               <div class="formGroup">
@@ -61,13 +62,13 @@
             </form>
           
           </div>
-        </div>
+        
      
       </ng-container>
         <mat-divider></mat-divider>
         <div class="uxg-menu-footer">
             <button *ngIf="isLoggedIn" mat-flat-button color="primary" dense (click)="logout()">
-                <mat-icon>exit_to_app</mat-icon>
+                <mat-icon>exit_to_app </mat-icon>
                 Logout
             </button>
         </div>

@@ -22,8 +22,9 @@ currentUserSubscription: Subscription;
  
   ngOnInit() {
     this.getLatestBooks();
-    this.auth.getCurrentUser().subscribe(()=>
-      this.getLatestBooks() )
+    this.currentUserSubscription=this.auth.getCurrentUser().subscribe((user)=>{
+    console.log(user)
+      this.getLatestBooks() })
    
    
   }

@@ -45,7 +45,7 @@ import { animation } from '@angular/animations';
 ]
 })
 
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit {
   @ViewChild(MatMenuTrigger) menuTrigger!: MatMenuTrigger;
   email: string="";
   name:string;
@@ -54,17 +54,7 @@ export class AppComponent implements AfterViewInit {
   menuState:boolean=true;
   livre:Book;
   isDropdownOpen = false;
-  ngAfterViewInit() {
-
-  }
-/*   @HostListener('document:click', ['$event'])
-  onOutsideClick(event: Event) {
-    if (!this.eref.nativeElement.contains(event.target)) {
-      this.closeDropdown();
-    }
-  } */
-
-  // ...
+  isLoggedIn: boolean = false;
 
   
   listItemAnimationState: 'default' | 'active' = 'active';
@@ -83,8 +73,8 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngOnInit() {
-   
-   
+    this.isLoggedIn=this.authService.isAuthenticated()
+  
 
  
   
@@ -107,11 +97,13 @@ register(): void {
 }
 login(): void {
  
-    console.log(this.email)
+  
   this.authService.login(this.email, this.password)
     .subscribe(
       response => {
-        console.log(response.user_id)
+         this.isLoggedIn=this.authService.isAuthenticated()
+       
+        
       },
       error => {
         // handle error
@@ -119,9 +111,13 @@ login(): void {
     );
     this.menuTrigger.closeMenu();
 }
-isLoggedIn=this.authService.isAuthenticated();
+
+
 logout(){
   this.authService.logout();
+  this.isLoggedIn=false
+
+ 
 }
 
 onListItemMouseEnter() {
