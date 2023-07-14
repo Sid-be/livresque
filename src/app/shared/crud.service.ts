@@ -41,7 +41,7 @@ export class CrudService {
           (response: HttpResponse<any>) => {
             console.log(response);
             if (response.status === 201) {
-              this.toast.success('success');
+              this.toast.success('Le livre a été ajouté avec succès');
             } else if (response.status === 400) {
               this.toast.error('error');
             } else if (response.status === 404) {
@@ -60,6 +60,7 @@ export class CrudService {
     
       return this.http.get(`${this.apiUrl}/book`);
   }
+
   GetOneBook(id) : Observable<Book>{
     
     return this.http.get<Book>(`${this.apiUrl}/book/${id}`);
