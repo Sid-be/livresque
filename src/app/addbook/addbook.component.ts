@@ -6,6 +6,7 @@ import { CrudService } from '../shared/crud.service';
 import { HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { of ,map,Subscription,skip} from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import {
   FormControl,
   FormGroup,
@@ -23,6 +24,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 export class AddbookComponent implements OnInit {
   private notificationSubscription: Subscription;
   constructor(
+    private actRoute: ActivatedRoute,
     private books: BooksService,
     private formBuilder: FormBuilder,
     private crudService: CrudService,
@@ -32,6 +34,7 @@ export class AddbookComponent implements OnInit {
    
   }
   form:FormGroup;
+  id:string='';
   livre: Book;
   isbnID: string;
   starRating = 0;
@@ -46,6 +49,9 @@ export class AddbookComponent implements OnInit {
  
 
   ngOnInit(): void {
+    this.isbnID = this.actRoute.snapshot.paramMap.get('id');
+   
+      this.getLivre();
    
   }
   isbnForm = new FormControl('', [
@@ -68,10 +74,7 @@ export class AddbookComponent implements OnInit {
   
 
 
-  onSubmit() {
-    this.isbnID = this.isbnForm.value;
-    this.getLivre();
-  }
+  
   getnewImage(): Observable<any> | any {
     if (this.livre != null) {
       return of(this.livre);

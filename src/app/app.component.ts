@@ -2,13 +2,13 @@ import { Component,OnInit, ElementRef, AfterViewInit,ViewChild, HostListener } f
 import { HttpClient } from '@angular/common/http';
 import { BooksService } from './shared/books.service';
 import { Book } from './livres';
-import { map,tap } from 'rxjs/operators';
+
 import { Router } from '@angular/router';
 import { state,style,trigger,animate,transition  } from '@angular/animations';
 import { AuthServiceService } from './shared/auth-service.service';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { FormControl,Validators } from '@angular/forms';
 
-import { switchMap, of, catchError } from 'rxjs';
 
 import {
   Observable
@@ -55,6 +55,11 @@ export class AppComponent implements OnInit {
   livre:Book;
   isDropdownOpen = false;
   isLoggedIn: boolean = false;
+  isbnID:string='';
+  isbnForm = new FormControl('', [
+    Validators.required,
+    Validators.pattern('/^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$/'),
+  ]);
 
   
   listItemAnimationState: 'default' | 'active' = 'active';
@@ -79,6 +84,10 @@ export class AppComponent implements OnInit {
  
   
 } 
+onSubmit() {
+  this.isbnID = this.isbnForm.value;
+  this.redirectToAddBook(this.isbnID)
+}
 register(): void {
   if (this.password !== this.confirmPassword) {
     alert('Les mots de passe ne correspondent pas');
@@ -115,11 +124,15 @@ login(): void {
 
 logout(){
   this.authService.logout();
-  this.isLoggedIn=false
+  this.isLoggedIn=false;
+  
 
  
 }
-
+redirectToAddBook(isbn:string){
+  console.log(isbn)
+  this.router.navigate(['ajout', this.isbnID]);
+}
 onListItemMouseEnter() {
   this.listItemAnimationState = 'default';
   this.menuState=!this.menuState

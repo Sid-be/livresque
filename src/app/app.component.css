@@ -40,6 +40,29 @@ background: linear-gradient(3deg, rgb(224, 234, 231) 0%, rgb(245, 244, 237) 100%
     margin-right: 1em;
     font-size: 0.8em;;
 }
+.search-input{
+ 
+    box-sizing: border-box;
+    font: inherit;
+    display: block;
+    font-size: 1rem;
+    height: 2.2rem;
+    width: 100%;
+    padding: 0.4rem 2.4rem 0.4rem 0.8rem;
+   
+    border-radius: 0.3rem;
+    border: 0.1rem solid #dcd6cc;
+    line-height: 3.2rem;
+}
+.wrap-nav{
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+app-nav-top{
+    width:50%;
+}
 .user{
     display: flex;
     align-items: center;
@@ -53,8 +76,10 @@ background: linear-gradient(3deg, rgb(224, 234, 231) 0%, rgb(245, 244, 237) 100%
 display:block;
 }
 .wrap-body{
-    display: flex;
+   
+    width: 1200px;
    flex:1;
+   margin:0 auto
 }
 .container{
 
@@ -62,7 +87,7 @@ display:block;
     flex-direction: row;
     margin-top:10px;
     
-    width:80%;
+    width:100%;
     background: -webkit-rgb(234, 241, 239);
 background: -o-rgb(234, 241, 239);
 background: -ms-rgb(234, 241, 239);
@@ -119,6 +144,4 @@ a:hover {
     
     background: #fcf7f5;
 }
-lord_icon{
-    display:inline-block;
-}
+

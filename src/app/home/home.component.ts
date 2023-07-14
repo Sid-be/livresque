@@ -24,7 +24,10 @@ currentUserSubscription: Subscription;
     this.getLatestBooks();
     this.currentUserSubscription=this.auth.getCurrentUser().subscribe((user)=>{
     console.log(user)
-      this.getLatestBooks() })
+      this.getLatestBooks() }
+     )
+
+
    
    
   }
@@ -49,6 +52,8 @@ currentUserSubscription: Subscription;
     );
     
   }
+  
+ 
  
 }
   

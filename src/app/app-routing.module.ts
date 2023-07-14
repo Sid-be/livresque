@@ -15,7 +15,7 @@ const routes: Routes = [
  
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'ajout', component: AddbookComponent },
+  { path: 'ajout/:id', component: AddbookComponent },
   { path: 'login', component: SignInComponent },
   { path: 'register', component: SignUpComponent },
   { path: 'dashboard', component: DashboardComponent },
