@@ -1,7 +1,9 @@
 # Livresque
-Voici une capture d'écran de mon application :
+
 
 ![screenshot](livresque_front.png)
+
+The application is based on the Angular framework and and use a REST API available in the "livresque_back" repository. The application serves as a library of books for each user. It is currently under development and undergoing continuous improvements.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
 
 ## Development server
