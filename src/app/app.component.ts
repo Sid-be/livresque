@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
 
   
   listItemAnimationState: 'default' | 'active' = 'active';
-  constructor( public books:BooksService,private router: Router,private authService: AuthServiceService,private eref: ElementRef){
+  constructor( public books:BooksService,private router: Router,public authService: AuthServiceService,private eref: ElementRef){
     
   
   }
@@ -80,7 +80,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getCurrentUser().subscribe((user)=>{if(user){this.nickname=user[1]}})
-    this.isLoggedIn=this.authService.isAuthenticated()
+ 
   
 
  

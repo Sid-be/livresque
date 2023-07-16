@@ -49,9 +49,14 @@ export class AddbookComponent implements OnInit {
  
 
   ngOnInit(): void {
-    this.isbnID = this.actRoute.snapshot.paramMap.get('id');
-   
+     
+    this.actRoute.paramMap.subscribe(params => {
+      this.isbnID = params.get('id');
+      // Mettez à jour le contenu en fonction du nouveau paramètre 'genre'
       this.getLivre();
+    });
+   
+     
    
   }
   isbnForm = new FormControl('', [
