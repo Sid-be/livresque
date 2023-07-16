@@ -49,6 +49,7 @@ export class AppComponent implements OnInit {
   @ViewChild(MatMenuTrigger) menuTrigger!: MatMenuTrigger;
   email: string="";
   name:string;
+  nickname:string=''
   password: string;
   confirmPassword: string;
   menuState:boolean=true;
@@ -78,6 +79,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.getCurrentUser().subscribe((user)=>{if(user){this.nickname=user[1]}})
     this.isLoggedIn=this.authService.isAuthenticated()
   
 

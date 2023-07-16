@@ -9,7 +9,9 @@
   
   </form></div>
 
-<div class="user"><h5 class="uxg-h5">User Profile</h5>
+<div class="user">
+  <h5 class="uxg-h5" *ngIf="nickname">{{nickname}}</h5>
+  <h5 class="uxg-h5" *ngIf="!nickname">Se connecter</h5>
   <div class="user-menu">
    
     <mat-menu #menu="matMenu" class="uxg-user-profile" [matAutoclose]="false" >
@@ -91,7 +93,7 @@
     <li>
     <a routerLink="/home" class="navigation" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active-link"><img class="nav-icon" src="assets/41-home.svg" alt=""> Home</a></li>
    <li>
-    <a routerLink="/ajout" class="navigation" routerLinkActive="active-link"><img class="nav-icon" src="assets/40-add-card.svg" alt="">Ajouer un livre</a></li>
+    <a routerLink="/add" class="navigation" routerLinkActive="active-link"><img class="nav-icon" src="assets/40-add-card.svg" alt="">Ajouer un livre</a></li>
     <li><a routerLink="/livres" class="navigation" routerLinkActive="active-link"><img class="nav-icon" src="assets/liste.svg" alt="">Liste des livres</a></li>
 
     <li> <a routerLink="/favoris"class="navigation" routerLinkActive="active-link"><img class="nav-icon" src="assets/bookmarks.svg" alt="">Favoris</a></li>
@@ -106,7 +108,7 @@
       <li>
       <a routerLink="/home" class="navigation" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active-link"><img class="nav-icon" src="assets/41-home.svg" alt=""> Home</a></li>
      <li>
-      <a routerLink="/ajout" class="navigation" routerLinkActive="active-link"><img class="nav-icon" src="assets/40-add-card.svg" alt="">Ajouer un livre</a></li>
+      <a routerLink="/add" class="navigation" routerLinkActive="active-link"><img class="nav-icon" src="assets/40-add-card.svg" alt="">Ajouer un livre</a></li>
       <li><a routerLink="/livres" class="navigation" routerLinkActive="active-link"><img class="nav-icon" src="assets/liste.svg" alt="">Liste des livres</a></li>
   
       <li> <a routerLink="/favoris"class="navigation" routerLinkActive="active-link"><img class="nav-icon" src="assets/bookmarks.svg" alt="">Favoris</a></li>

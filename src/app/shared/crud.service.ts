@@ -60,6 +60,10 @@ export class CrudService {
     
       return this.http.get(`${this.apiUrl}/book`);
   }
+  GetBooksByGenre(genre) : Observable<any>{
+    
+    return this.http.get(`${this.apiUrl}/book/genre/${genre}`);
+}
 
   GetOneBook(id) : Observable<Book>{
     

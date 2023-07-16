@@ -11,12 +11,12 @@ import jwt_decode from 'jwt-decode';
 })
 export class AuthServiceService {
   private baseUrl = 'http://localhost:3000/auth';
-private currentUserSubject:BehaviorSubject<string|null>=new BehaviorSubject<string | null>(null);
+private currentUserSubject:BehaviorSubject<string[]|null>=new BehaviorSubject<string[] | null>(null);
   constructor(private http: HttpClient) {}
-  setCurrentUser(user:string|null){
+  setCurrentUser(user:string[]|null){
     this.currentUserSubject.next(user)
   }
-    getCurrentUser(): Observable<string | null> {
+    getCurrentUser(): Observable<string[] | null> {
     return this.currentUserSubject.asObservable();
   }
 
@@ -25,7 +25,8 @@ private currentUserSubject:BehaviorSubject<string|null>=new BehaviorSubject<stri
       map(response => {
         // Sauvegarde du token d'authentification dans le stockage local
         localStorage.setItem('access_token', response.token);
-        this.setCurrentUser(email);
+        const decodedToken:any=jwt_decode(response.token);
+        this.setCurrentUser([email,decodedToken.name]);
       
         return response;
       })

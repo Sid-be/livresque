@@ -123,7 +123,7 @@ export class AddbookComponent implements OnInit {
    
   livre.title= this.resume? this.resume.title:this.title.value;
   livre.isbn=this.isbnID;
-  livre.publisher=this.resume?this.resume.publisher:this.publisher.value;
+  livre.publisher=this.resume.publisher?this.resume.publisher:this.publisher.value;
   livre.publishedDate=this.resume.publishedDate;
   livre.image=this.imageSrc
   livre.synopsis=this.resume?this.resume.description:this.synopsis.value
@@ -136,7 +136,7 @@ export class AddbookComponent implements OnInit {
    console.log(this.genre)
    livre.genre=this.genre  
   } */
- 
+  console.log(this.publisher.value)
 this.crudService.setUserBook(livre)
     
   
@@ -161,7 +161,7 @@ this.crudService.notification$.pipe(skip(1)).subscribe((message) => {
    livre.langage='fr';
    livre.favoris=this.favoris.value;
    livre.genre=this.genres.value;
-  
+  console.log(livre)
 this.crudService.setUserBook(livre)
 
 

@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 lastBook:any
 booksList:any
 id:any
+genre:any
 currentUser: string | null;
 currentUserSubscription: Subscription;
   constructor(private books:CrudService,private auth:AuthServiceService,private router: Router) { }
@@ -35,7 +36,10 @@ currentUserSubscription: Subscription;
   ngOnDestroy(): void {
     this.currentUserSubscription.unsubscribe();
   }
-
+  bookByGenre(genre){
+    this.genre=genre;
+     this.router.navigate(['genre', this.id]);
+   }
  
   openBook(id){
    this.id=id;

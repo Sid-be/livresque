@@ -64,6 +64,7 @@ app-nav-top{
     width:50%;
 }
 .user{
+    margin-right: 2em;
     display: flex;
     align-items: center;
 }

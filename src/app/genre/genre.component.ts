@@ -1,5 +1,6 @@
+import { CrudService } from './../shared/crud.service';
 import { Component, OnInit } from '@angular/core';
-import { CrudService } from '../shared/crud.service';
+
 import { BooksService } from '../shared/books.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -16,15 +17,27 @@ export class GenreComponent implements OnInit {
 id:any;
 genre:any;
 bookid:any;
+booksList:any
   ngOnInit(): void {
-    this.id = this.actRoute.snapshot.paramMap.get('id');
+     this.actRoute.paramMap.subscribe(params => {
+      this.genre = params.get('genre');
+      // Mettez à jour le contenu en fonction du nouveau paramètre 'genre'
+      this.getGenre()
+    });
+    
    
    //this.crudService.GetBookList().subscribe((data)=>{this.genre=data;console.log(this.genre)})
    
- 
+   
     
     
   }
+  getGenre(){
+  this.crudService.GetBooksByGenre(this.genre).subscribe({next:data => {this.booksList = data;
+      console.log(this.booksList)
+    },
+      error:error => console.error(error)})
+}
 /* genrefilter(genres){
   return this.genre.filter(x=>x.info.genre==genres)
 } */
