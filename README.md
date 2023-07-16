@@ -1,5 +1,7 @@
 # Livresque
+Voici une capture d'écran de mon application :
 
+![screenshot](src/livresque_front.png)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
 
 ## Development server
