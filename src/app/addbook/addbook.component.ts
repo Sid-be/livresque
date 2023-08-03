@@ -44,6 +44,7 @@ export class AddbookComponent implements OnInit {
   btnStyle: string = 'hide';
   resume: any;
   genresList :string[]= ['science-fiction', 'polar', 'fantaisie', 'Roman'];
+  isLoading: boolean = false;
  
   
  
@@ -104,13 +105,19 @@ export class AddbookComponent implements OnInit {
   }
   getLivre() {
     
+    this.isLoading = true;
     this.books.getIsbnDb(this.isbnID).subscribe((result)=>{
     
-     console.log(result)
-      
+  
+        this.isLoading = false;
         this.imageSrc=result
    
-     });
+     },
+     (error) => {
+      console.error(error);
+      this.isLoading = false; // Fin du chargement (échec)
+    }
+     );
     
     this.books.getResume(this.isbnID).subscribe({
       next: (resume) => {

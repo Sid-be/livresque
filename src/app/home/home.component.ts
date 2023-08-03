@@ -34,7 +34,7 @@ currentUserSubscription: Subscription;
   }
 
   ngOnDestroy(): void {
-    this.currentUserSubscription.unsubscribe();
+    this.currentUserSubscription?.unsubscribe();
   }
   bookByGenre(genre){
     this.genre=genre;

@@ -67,6 +67,7 @@ private currentUserSubject:BehaviorSubject<string[]|null>=new BehaviorSubject<st
   const decodedToken:any=jwt_decode(token);
   const dateNow=Date.now()/1000
   if(token && (decodedToken.exp>dateNow)){
+    console.log(decodedToken.exp>dateNow)
   return true
 }
 return false

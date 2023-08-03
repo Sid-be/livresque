@@ -54,7 +54,7 @@
          
           <div  (click)="stopPropagation($event)">
             
-            <form (submit)="login()" *ngIf="!isLoggedIn">
+            <form (submit)="login()" *ngIf="">
               
               <!-- Ajoutez ici les champs de votre formulaire de connexion -->
              
@@ -74,7 +74,7 @@
       </ng-container>
         <mat-divider></mat-divider>
         <div class="uxg-menu-footer">
-            <button *ngIf="!authService.isAuthenticated()" mat-flat-button color="primary" dense (click)="logout()">
+            <button *ngIf="" mat-flat-button color="primary" dense (click)="logout()">
                 <mat-icon>exit_to_app </mat-icon>
                 Logout
             </button>
