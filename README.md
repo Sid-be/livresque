@@ -9,6 +9,9 @@ Book details
 <img width="1300" alt="image" src="https://github.com/Sid-be/livresque/assets/102231247/d9d38995-2d9b-48d9-ae6c-cc602f6d37d9">
 Login Screen
 <img width="1297" alt="image" src="https://github.com/Sid-be/livresque/assets/102231247/aa0ba914-f834-4be6-a579-56eb2a14c12d">
+Mobile version
+<img width="316" alt="image" src="https://github.com/Sid-be/livresque/assets/102231247/69f4a78f-30c4-4013-bea4-8464b77b5f17">
+
 
 
 
