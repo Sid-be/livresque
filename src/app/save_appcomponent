@@ -1,0 +1,194 @@
+<div class="nav-header" fxLayoutAlign="space-between baseline">
+<div class="burger-menu"  (click)="menuState?onListItemMouseEnter():onListItemMouseLeave()" fxShow="true" fxHide.gt-sm fxLayoutAlign="start"><svg width="3.5em" height="3.5em" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7C4 6.44771 4.44772 6 5 6H24C24.5523 6 25 6.44771 25 7C25 7.55229 24.5523 8 24 8H5C4.44772 8 4 7.55229 4 7Z" fill="#28353c"/><path d="M4 13.9998C4 13.4475 4.44772 12.9997 5 12.9997L16 13C16.5523 13 17 13.4477 17 14C17 14.5523 16.5523 15 16 15L5 14.9998C4.44772 14.9998 4 14.552 4 13.9998Z" fill="#28353c"/><path d="M5 19.9998C4.44772 19.9998 4 20.4475 4 20.9998C4 21.552 4.44772 21.9997 5 21.9997H22C22.5523 21.9997 23 21.552 23 20.9998C23 20.4475 22.5523 19.9998 22 19.9998H5Z" fill="#28353c"/></svg></div>
+<div class="logo" routerLink="/home" ><img src="assets/logo2.png" alt=""><h1>Livresque</h1></div>
+<div class="wrap-nav"fxShow="true" fxHide.lt-md><app-nav-top ></app-nav-top><form (ngSubmit)="onSubmit()">
+  <input type="text"  name="q" class="search-input" aria-label="Search by ISBN" spellcheck="false"  aria-expanded="false" aria-controls="search-listbox" placeholder="Recherche par N° ISBN" value="" [formControl]="isbnForm" >
+  
+  </form></div>
+
+<div class="user">
+  <h5 class="uxg-h5" *ngIf="nickname">{{nickname}}</h5>
+  <h5 class="uxg-h5" *ngIf="!nickname">Se connecter</h5>
+  <div class="user-menu">
+   
+    <mat-menu #menu="matMenu" class="uxg-user-profile" [matAutoclose]="false" >
+        <div class="uxg-menu-header">
+            <div class="uxg-avatar-title-block">
+                <div class="uxg-avatar"><img style="width:100px;"src="assets/account.webp" alt=""  ><span>User</span></div>
+                <h6 class="uxg-h6"></h6>
+                <span class="uxg-caption"></span>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <ng-container  >
+      <!--   <div class="displayTable">
+          <div class="displayTableCell">
+            <div class="authBlock">
+              <h3>S'inscrire</h3>
+              <div class="formGroup">
+                <input type="email" class="formControl" placeholder="Adresse email" [(ngModel)]="email" name="email" required>
+              </div>
+              
+              <div class="formGroup">
+                <input type="password" class="formControl" placeholder="Mot de passe" [(ngModel)]="password" name="password" required>
+              </div>
+              
+              <div class="formGroup">
+                <button type="button" class="btn btnPrimary" (click)="login()">S'inscrire</button>
+              </div>
+              <div class="formGroup">
+                <span class="or"><span class="orInner">Ou</span></span>
+              </div>
+              <!-- Continue with Google 
+             
+            </div>
+            <div class="redirectToLogin">
+              <span>Déjà inscrit? <a routerLink="/register">Se connecter</a></span>
+            </div>
+          </div>
+        </div> -->
+       
+         
+          <div  (click)="stopPropagation($event)">
+            
+            <form (submit)="login()" *ngIf="">
+              
+              <!-- Ajoutez ici les champs de votre formulaire de connexion -->
+             
+              <div class="formGroup">
+                <input type="email" class="formControl" placeholder="Adresse email" [(ngModel)]="email" name="email" required>
+              </div>
+              <div class="formGroup">
+                <input type="password" class="formControl" placeholder="Mot de passe" [(ngModel)]="password" name="password" required>
+              </div>
+              <button type="submit" >Se connecter</button>
+           
+            </form>
+          
+          </div>
+        
+     
+      </ng-container>
+        <mat-divider></mat-divider>
+        <div class="uxg-menu-footer">
+            <button *ngIf="" mat-flat-button color="primary" dense (click)="logout()">
+                <mat-icon>exit_to_app </mat-icon>
+                Logout
+            </button>
+        </div>
+    </mat-menu>
+  </div>
+  <img src="assets/account.webp" alt="" mat-stroked-button [matMenuTriggerFor]="menu" > </div>
+</div>
+  
+
+<div class="wrap-body">
+
+    <div class="left-nav" fxShow="true"  fxHide.gt-sm [@listItem]="listItemAnimationState">
+<ul 
+>
+    <li>
+    <a routerLink="/home" class="navigation" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active-link"><img class="nav-icon" src="assets/41-home.svg" alt=""> Home</a></li>
+   <li>
+    <a routerLink="/add" class="navigation" routerLinkActive="active-link"><img class="nav-icon" src="assets/40-add-card.svg" alt="">Ajouer un livre</a></li>
+    <li><a routerLink="/livres" class="navigation" routerLinkActive="active-link"><img class="nav-icon" src="assets/liste.svg" alt="">Liste des livres</a></li>
+
+    <li> <a routerLink="/favoris"class="navigation" routerLinkActive="active-link"><img class="nav-icon" src="assets/bookmarks.svg" alt="">Favoris</a></li>
+
+
+   
+</ul>
+</div>
+<div class="left-nav" fxShow="true" fxHide.lt-md >
+  <ul 
+  >
+      <li>
+      <a routerLink="/home" class="navigation" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active-link"><img class="nav-icon" src="assets/41-home.svg" alt=""> Home</a></li>
+     <li>
+      <a routerLink="/add" class="navigation" routerLinkActive="active-link"><img class="nav-icon" src="assets/40-add-card.svg" alt="">Ajouer un livre</a></li>
+      <li><a routerLink="/livres" class="navigation" routerLinkActive="active-link"><img class="nav-icon" src="assets/liste.svg" alt="">Liste des livres</a></li>
+  
+      <li> <a routerLink="/favoris"class="navigation" routerLinkActive="active-link"><img class="nav-icon" src="assets/bookmarks.svg" alt="">Favoris</a></li>
+  
+  
+     
+  </ul>
+  </div>
+
+  
+  <div class="wrapper"   flexLayout="column" fxFlex="100%">
+<div class="container" fxFlex="70%">
+</div>
+</div>
+</div>
+
+
+
+
+
+<div class="fiche">
+  <div class="couv"><img [src]="imageSrc" >
+    <div *ngIf="imageSrc" class="validate"><button class="button" (click)="ShowInput()">Modifier la couverture</button>
+    </div>
+    <form (ngSubmit)="onUpdate()">
+      <mat-form-field [ngClass]="[btnStyle]" appearance="fill">
+        <mat-label>Adresse de la nouvelle image</mat-label>
+        <input matInput placeholder="" [formControl]="image">
+      </mat-form-field>
+      <button class="button" [ngClass]="[btnStyle]" type="submit" (click)="onUpdate()">valider</button>
+    </form>
+  </div>
+  <div class="infos">
+   <mat-form-field class="example-full-width" appearance="fill" *ngIf="!resume?.title">
+     <mat-label>Titre</mat-label>
+     <input matInput placeholder="Ajouter un titre" [formControl]="title">
+   </mat-form-field>
+    <div class="title">{{resume?.title}}</div>
+    <mat-form-field class="example-full-width" appearance="fill" *ngIf="!resume?.authors">
+     <mat-label>Auteur</mat-label>
+     <input matInput placeholder="Ajouter un auteur" [formControl]="authors">
+   </mat-form-field>
+    <div class="auteur"><b>Auteur: </b> <span *ngIf="resume" >{{resume.authors[0]}}</span></div>
+    <div class="star">
+      <!-- <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating> -->
+    </div>
+    <mat-form-field appearance="fill">
+     <mat-label>Genres</mat-label>
+     <mat-select [formControl]="genres" multiple>
+       <mat-option *ngFor="let genre of genresList" [value]="genre">{{genre}}</mat-option>
+     </mat-select>
+   </mat-form-field>
+    <div class="resume">
+      
+      <form (ngSubmit)="submitBookData()">
+        <div class="mat-form">
+          <mat-form-field appearance="fill" *ngIf="!resume?.description">
+            <mat-label>Ajouter un résumé</mat-label>
+            <textarea matInput [formControl]="synopsis" placeholder=></textarea>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+    <mat-form-field class="example-full-width" appearance="fill" *ngIf="!resume?.publisher">
+     <mat-label>Editeur</mat-label>
+     <input matInput placeholder="Ajouter un éditeur" [formControl]="publisher">
+   </mat-form-field>
+   
+    <div class="editeur"><b>Editeur: </b>{{resume?.publisher}}</div>
+    
+    <div class="date-publi"><b>Date de publication: </b>{{resume?.publishedDate}}</div>
+    
+    <mat-form-field class="example-full-width" appearance="fill" *ngIf="!resume?.publishedDate">
+     <input matInput [matDatepicker]="myDatepicker">
+     <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+     <mat-datepicker #myDatepicker></mat-datepicker>
+   </mat-form-field>
+    <p>
+      <mat-checkbox [formControl]="favoris"><b> Ajouter au favoris</b></mat-checkbox>
+    </p>
+    <button class="button" (click)="submitBookData()">Ajouter</button>
+  </div>
+  
+</div>
+<div class="resume">
+<span>Résumé:</span> <p>{{resume?.description}}</p></div>

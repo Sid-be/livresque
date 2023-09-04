@@ -9,7 +9,7 @@
      <button class="button" type="submit" click="onSubmit()">Recherche</button>
    </form> -->
  </div>
- <ng-scrollbar style="height: 80%">
+
  <div class="fiche">
    <div class="couv"><img [src]="imageSrc" >
      <div *ngIf="imageSrc" class="validate"><button class="button" (click)="ShowInput()">Modifier la couverture</button>
@@ -76,5 +76,7 @@
  </div>
  <div class="resume">
  <span>Résumé:</span> <p>{{resume?.description}}</p></div>
-</ng-scrollbar>
+
+
+
  

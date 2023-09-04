@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.5.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1544.6 130.6" style="enable-background:new 0 0 1544.6 130.6;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:url(#SVGID_00000098909806397710599870000010791010197613965956_);}
+</style>
+<g id="Calque_1">
+	<g>
+		
+			<image style="overflow:visible;" width="1619" height="150" xlink:href="F23310EA.png"  transform="matrix(1 0 0 1 -9.2662 -13.7842)">
+		</image>
+	</g>
+</g>
+<g id="Calque_2">
+	<g>
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="772.4029" y1="4.8389" x2="772.4029" y2="34.1967">
+			<stop  offset="0" style="stop-color:#E6DDCE"/>
+			<stop  offset="0.1047" style="stop-color:#EAE2D4"/>
+			<stop  offset="0.3416" style="stop-color:#EEE7DB"/>
+			<stop  offset="1" style="stop-color:#EFE8DD"/>
+		</linearGradient>
+		<polygon class="st0" points="66.7,0 4,37.7 1540.8,37.7 1479.5,0 		"/>
+		
+			<linearGradient id="SVGID_00000099656274317355127110000001497708585267501759_" gradientUnits="userSpaceOnUse" x1="772.2734" y1="41.5591" x2="772.2734" y2="50.7864">
+			<stop  offset="0" style="stop-color:#FCF8F0"/>
+			<stop  offset="0.4688" style="stop-color:#F9F5ED"/>
+			<stop  offset="0.8735" style="stop-color:#EEEBE4"/>
+			<stop  offset="1" style="stop-color:#E9E6E0"/>
+		</linearGradient>
+		<path style="fill:url(#SVGID_00000099656274317355127110000001497708585267501759_);" d="M0.5,49.6v-7.8c0-2.2,1.8-4.1,4.1-4.1
+			H1540c2.2,0,4.1,1.8,4.1,4.1v7.8c0,2.2-1.8,4.1-4.1,4.1H4.5C2.3,53.7,0.5,51.9,0.5,49.6z"/>
+	</g>
+</g>
+</svg>

@@ -71,6 +71,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './shared/interceptor.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HotToastModule } from '@ngneat/hot-toast';
+import { ButtonComponent } from './button/button.component';
+import { BookComponent } from './book/book.component';
 
 
 
@@ -132,7 +134,9 @@ const AllMaterialModules=[
     SignUpComponent,
     VerifiyEmailComponent,
     ForgotPasswordComponent,
-    DashboardComponent
+    DashboardComponent,
+    ButtonComponent,
+    BookComponent
     
   ],
   imports: [

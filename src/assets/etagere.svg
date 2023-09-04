@@ -1,29 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 26.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  x="0px" y="0px" viewBox="0 0 331.8 27.4"
-     style="width: 100%; height: 5em; display: block;"
-     xml:space="preserve" preserveAspectRatio="none">
-<style type="text/css">
-	.st0{fill:#EBDFD1;}
-	.st1{fill:url(#SVGID_1_);}
-	.st2{fill:#FFFCFC;}
-</style>
-<desc>etagere</desc>
-<g id="et9jDBtuCKu144vNsx1gT" transform="matrix(1 0 0 1 252.03 122.96)">
-	<path vector-effect="non-scaling-stroke" class="st0" d="M-227.8-102.8L-252-123H47.1l23.7,20.2H-227.8z"/>
-</g>
-<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-89.52" y1="468.6453" x2="-65.6711" y2="468.6453" gradientTransform="matrix(1 0 0 1 89.52 -454.9203)">
-	<stop  offset="0" style="stop-color:#E0CFBE"/>
-	<stop  offset="1" style="stop-color:#EDE4DE"/>
-</linearGradient>
-<path vector-effect="non-scaling-stroke" class="st1" d="M0,0l23.8,19.4v8.1L0,9.5V0z"/>
-<g id="_x31_Ji1yAxWf6OuwEMOg9lZ5" transform="matrix(1 0 0 1 264.5 137.45)">
-	<g>
-		<g>
-			<path vector-effect="non-scaling-stroke" class="st2" d="M58-116.8v3.8c0,1.7-1.4,3-3,3h-295c-1.7,0-3-1.4-3-3v-2.3
-				c0-1.7,1.4-3,3-3H56.4C57.3-118.4,58-117.7,58-116.8z"/>
-		</g>
-	</g>
-</g>
-</svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_2" data-name="Calque 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1543.6 53.68">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Dégradé_sans_nom_68);
+      }
 
+      .cls-2 {
+        fill: url(#Dégradé_sans_nom_67);
+      }
+    </style>
+    <linearGradient id="Dégradé_sans_nom_68" data-name="Dégradé sans nom 68" x1="771.93" y1="4.84" x2="771.93" y2="34.2" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e6ddce"/>
+      <stop offset=".1" stop-color="#e9e1d4"/>
+      <stop offset=".34" stop-color="#ede6db"/>
+      <stop offset="1" stop-color="#efe8dd"/>
+    </linearGradient>
+    <linearGradient id="Dégradé_sans_nom_67" data-name="Dégradé sans nom 67" x1="771.8" y1="41.56" x2="771.8" y2="50.79" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fcf8f0"/>
+      <stop offset=".47" stop-color="#f8f4ed"/>
+      <stop offset=".87" stop-color="#eeeae4"/>
+      <stop offset="1" stop-color="#e9e6e0"/>
+    </linearGradient>
+  </defs>
+  <polygon class="cls-1" points="66.21 0 3.5 37.73 1540.36 37.73 1479.02 0 66.21 0"/>
+  <rect class="cls-2" y="37.73" width="1543.6" height="15.96" rx="4.06" ry="4.06"/>
+</svg>

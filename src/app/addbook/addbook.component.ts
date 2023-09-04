@@ -104,9 +104,9 @@ export class AddbookComponent implements OnInit {
   }
   }
   getLivre() {
-    
+    console.log(this.isbnForm.value)
     this.isLoading = true;
-    this.books.getIsbnDb(this.isbnID).subscribe((result)=>{
+    this.books.getIsbnDb(this.isbnForm.value).subscribe((result)=>{
     
   
         this.isLoading = false;

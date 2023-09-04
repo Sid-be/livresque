@@ -10,12 +10,17 @@ import { BooksService } from '../shared/books.service';
 export class NavTopComponent implements OnInit {
 
   constructor(private router: Router, public book:BooksService) { }
-
+  isDropdownOpen = false;
   ngOnInit(): void {
     
   }
   showlivreservice(){
     console.log(this.book.livre)
   }
-
+  toggleDropdown(event:Event) {
+    event.preventDefault
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+  toLogin(){
+    this.router.navigate(['login',])}
 }

@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
   confirmPassword: string;
   menuState:boolean=true;
   livre:Book;
-  isDropdownOpen = false;
+  
   isLoggedIn: boolean = false;
   isbnID:string='';
   isbnForm = new FormControl('', [
@@ -68,15 +68,11 @@ export class AppComponent implements OnInit {
     
   
   }
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
+ 
   stopPropagation(event: Event) {
     event.stopPropagation();
   }
-  closeDropdown() {
-    this.isDropdownOpen = false;
-  }
+  
 
   ngOnInit() {
     this.authService.getCurrentUser().subscribe((user)=>{if(user){this.nickname=user[1]}})

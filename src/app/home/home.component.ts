@@ -16,12 +16,15 @@ lastBook:any
 booksList:any
 id:any
 genre:any
+n:number=4
 currentUser: string | null;
 currentUserSubscription: Subscription;
+screeWidth:number|null;
   constructor(private books:CrudService,private auth:AuthServiceService,private router: Router) { }
 
  
   ngOnInit() {
+    this.screenSize()
     this.getLatestBooks();
     this.currentUserSubscription=this.auth.getCurrentUser().subscribe((user)=>{
     console.log(user)
@@ -43,7 +46,7 @@ currentUserSubscription: Subscription;
  
   openBook(id){
    this.id=id;
-    this.router.navigate(['edit', this.id]);
+    this.router.navigate(['book', this.id]);
   }
   getLatestBooks() {
     this.books.GetBooks().subscribe(
@@ -55,6 +58,14 @@ currentUserSubscription: Subscription;
       
     );
     
+  }
+  screenSize():number{
+    this.screeWidth=window.innerWidth;
+    if(this.screeWidth<=390){
+      
+      return (this.n=3)
+    }
+    return this.n
   }
   
  

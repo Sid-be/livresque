@@ -1,4 +1,4 @@
-  <div class="home-bottom">
+<!--   <div class="home-bottom">
     <div class="galerie2" fxLayout="row">
       <figure *ngFor="let onebook of booksList">
         <img 
@@ -10,5 +10,17 @@
         <span></span>
       </figure>
     </div>
-  </div>
+  </div> -->
 
+
+
+
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div *ngFor="let onebook of booksList">
+          <img  [attr.data-isbn-value]="onebook?.isbn"
+          (click)="openBook(onebook?.isbn)"
+          src="{{ onebook?.image }}"
+          alt="{{ onebook?.title }}" class="h-auto max-w-full rounded-lg" >
+      </div>
+     
+  </div>

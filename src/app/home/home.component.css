@@ -1,36 +1,35 @@
 
 
-.galerie,.galerie2{
+.galerie2{
     
 
     display: flex;
    
-    justify-content: center;
+
 
 }
 .galerie{
     width:100%;
     position: relative;
 }
-.galerie::after{
+/* .galerie::after{
     content: "";
     width: 100%;
-    height:15%;
+    height:35%;
    position:absolute;
-   
+  
     background:url(/assets/etagere.svg
     );
     background-size:100%;
    background-repeat:no-repeat;
     display: block;
-    top: 90%;
+    top: 92%;
     right: 0;
     z-index:2;
-    filter: url(#shadow);
-}
-#shadow {
-    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
-  }
+
+   
+} */
+
 .galerie2{
     margin:0 auto;
     z-index: 1;
@@ -40,18 +39,7 @@
    
     
 }
-.galerie2 >figure{
-    align-self: left;
-}
-.galerie2 img {
-    display: block;
-    max-height: 240px;
-    border-radius: 20px;
-    min-width: 100px;
-    max-width: 100%;
-    width: auto;
-    height: 100%;
-}
+
 
 a{
     vertical-align: baseline;
@@ -65,14 +53,7 @@ a{
     border-radius: 5px;
 }
 
-.home-header{
-   
-    display: flex;
-    align-items: center;
-    position: relative;
-    flex-direction: column;
-   
-}
+
 
 .home-bottom{
     overflow-y: auto;
@@ -81,28 +62,8 @@ img:hover{
     cursor: pointer;
 
 }
-.galerie img::after{
-    content: "";
-    width: 100%;
-    height:100%;
-  
-   
-    background:url(/assets/bookmark-plus.svg
-    );
-    position:absolute;
-    display: block;
-    background-size: 100%;
-}
-.galerie img{
-    display: block;
-    max-height: 300px;
-    border-radius: 0.8em;
-    min-width: 70px;
-    max-width: 100%;
-    width: auto;
-    height: 100%;
-    position:relative;
-}
+
+
     
 .prompt{
     height: 100%;
@@ -114,19 +75,108 @@ img:hover{
     margin-left:1rem
 
 }
-figure{
-    text-align: center;
-    z-index: 5;
-    margin: 0.5em 1rem;
- 
-   
-}
+
 
 
 .etal{
     display:block;
 }
 
-svg {
-    filter: drop-shadow(1px 22px 13px rgba(0, 0, 0, 0.20));
-  }
+
+.book {
+   
+   
+    transition: all .25s ease-in-out;
+    transform-origin: left center 0px;
+    transform-style: preserve-3d;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+   
+    overflow: hidden;
+    box-shadow: rgb(11 11 11 / 40%) 5px 0px 4px -3px;
+}
+.book:before{
+    content: "";
+    width: 3px;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    bottom: 0;
+    background: rgba(0,0,0,0.2);
+    box-shadow: 1px 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.box-out .book::after {
+    content: " ";
+    display: block;
+    opacity: 0;
+    width: 180px;
+    height: 255px;
+    position: relative;
+    left: 8px;
+    transition: all .3s ease;
+}
+
+.box-out .book::before {
+    content: " ";
+    z-index: 999;
+    display: block;
+    width: 20px;
+    height: 100px;
+    opacity: 0;
+    position: absolute;
+    top: -12px;
+    right: 8px;
+    transition: all .3s ease-in-out;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAABhCAYAAABh23lYAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHCSURBVHgB7dxPTsJAHMXxN7Xu3UhigobxJHACvQFwAr2BcgO8AZxE7uGiDZiQyEIW7oSOUyKbKgLS8u+9b9JNF818fum0XdWUhy9VEDZBGIdBGD6DsFM3bQYgTnjWhGdNeNaEZ0141oRnTXjWhGdNeNaEZ0141oRnTXjWhGdNeNaEZ0141oRnTXjWhGdNeNaEZ0141oRnTXjWhGdNeNaEZ0141oRnTXjWhGdNeNaEZ0141oRnTXjWhGdNeNZ2hR/7o+UcmnCIsaNCbLcU/RR8oB1bO/4+17l8ixoGeIBBBVvMXI0ih+L7Df2j8iiqnvgh+AVVUXDOTZvF4tNb2qC7DJ1tNgSDO78tblFQxeE92l+0NSjZDjaoMowqyYl7hDF15JzL+x+YHtxLgFq/ZO2m8LT4wsb90nUjmMD61XaRc7ng5+jBua29ntsecq6oIWyELxqdLe8h/GvPp+h0T28D/FezZ8Ip7pHgZt3X5NoPvH1BZ5sNIUTDL7C+6hBWxxt0gk+00tsOe96qH0zL8GO4pBtMg/YhoLMtG8Ii/EpfY4fSoiFk8UeFzpYdwhz/jiNGZ0uHEBjUEzftohJFZyAsdX8BM0/amLC3spYAAAAASUVORK5CYII=');
+    background-size: 16px;
+    background-repeat: no-repeat;
+}
+
+
+.box-inner .book {
+    margin-left: 90px;
+    position: relative;
+    top: -194px;
+}
+
+/* ----- hover ----- */
+
+.book:hover {
+    cursor: pointer;
+    /* transform: rotateY(-28deg) rotateZ(-2deg) scale(1.02); */
+   
+    /* box-shadow: rgb(3 3 3 / 37%) 3px 3px, rgb(238 235 237) 5px 5px, #4242425c 7px 7px, #e0e0e0 9px 9px, rgb(46 46 46) 11px 11px; */
+}
+
+.book:hover::after {
+    content: " ";
+    display: block;
+    opacity: 1;
+    width: 97%;
+    height: 100%;
+    position: relative;
+    left: 8px;
+    background: linear-gradient(-180deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, 0) 60%);
+    transform: /* rotateY(-28deg) rotateZ(-2deg) */ scale(1.02);
+}
+
+.book:hover::before {
+    transform: translateY(9px);
+    transform: /* rotateY(-28deg) rotateZ(-2deg) */ scale(1.02);
+    opacity: 1;
+  
+}
+
+figure:hover:after{
+    transform: /* rotateY(-28deg) rotateZ(-2deg) */ scale(1.02);
+
+   
+  
+}
+@media only screen and (max-width: 768px) {
+    .galerie:after{
+        
+        transform:scaleY(3)
+    }
+}

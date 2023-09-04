@@ -16,7 +16,7 @@ export class GenreComponent implements OnInit {
     private router: Router,private crudService:CrudService,private books:BooksService) { }
 id:any;
 genre:any;
-bookid:any;
+
 booksList:any
   ngOnInit(): void {
      this.actRoute.paramMap.subscribe(params => {
@@ -42,7 +42,7 @@ booksList:any
   return this.genre.filter(x=>x.info.genre==genres)
 } */
   openBook(id){
-    this.bookid=id;
-     this.router.navigate(['edit', this.id]);
+   
+     this.router.navigate(['edit', id]);
    }
 }
