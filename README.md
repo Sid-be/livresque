@@ -5,6 +5,12 @@ v1
 
 V1.5
 <img width="1299" alt="image" src="https://github.com/Sid-be/livresque/assets/102231247/4ab20b0f-5617-4d6d-a942-64bd92d3bcd7">
+Book details 
+<img width="1300" alt="image" src="https://github.com/Sid-be/livresque/assets/102231247/d9d38995-2d9b-48d9-ae6c-cc602f6d37d9">
+Login Screen
+<img width="1297" alt="image" src="https://github.com/Sid-be/livresque/assets/102231247/aa0ba914-f834-4be6-a579-56eb2a14c12d">
+
+
 
 
 The application is based on the Angular framework and and use a REST API available in the "livresque_back" repository. The application serves as a library of books for each user. It is currently under development and undergoing continuous improvements.
