@@ -2,6 +2,8 @@
 
 
 ![screenshot](livresque_front.png)
+<img width="1299" alt="image" src="https://github.com/Sid-be/livresque/assets/102231247/4ab20b0f-5617-4d6d-a942-64bd92d3bcd7">
+
 
 The application is based on the Angular framework and and use a REST API available in the "livresque_back" repository. The application serves as a library of books for each user. It is currently under development and undergoing continuous improvements.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
