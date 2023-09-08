@@ -75,71 +75,14 @@ export class AppComponent implements OnInit {
   
 
   ngOnInit() {
-    this.authService.getCurrentUser().subscribe((user)=>{if(user){this.nickname=user[1]}})
+  
  
   
 
  
   
 } 
-onSubmit() {
-  this.isbnID = this.isbnForm.value;
-  this.redirectToAddBook(this.isbnID)
-}
-register(): void {
-  if (this.password !== this.confirmPassword) {
-    alert('Les mots de passe ne correspondent pas');
-    return;
-  }
-  this.authService.register(this.email,this.name, this.password)
-    .subscribe(
-      response => {
-        alert('Inscription réussie!');
-      },
-      error => {
-        console.log(error);
-        alert('Une erreur s\'est produite lors de l\'inscription');
-      }
-    );
-}
-login(): void {
- 
-  
-  this.authService.login(this.email, this.password)
-    .subscribe(
-      response => {
-         this.isLoggedIn=this.authService.isAuthenticated()
-       
-        
-      },
-      error => {
-        // handle error
-      }
-    );
-    this.menuTrigger.closeMenu();
-}
 
-
-logout(){
-  this.authService.logout();
-  this.isLoggedIn=false;
-  
-
- 
-}
-redirectToAddBook(isbn:string){
-  console.log(isbn)
-  this.router.navigate(['ajout', this.isbnID]);
-}
-onListItemMouseEnter() {
-  this.listItemAnimationState = 'default';
-  this.menuState=!this.menuState
-}
-
-onListItemMouseLeave() {
-  this.listItemAnimationState = 'active';
-  this.menuState=!this.menuState
-}
 
 
 }

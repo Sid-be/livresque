@@ -1,7 +1,7 @@
 <div class="home-header flex flex-col md:flex-row md:gap-0 lg:gap-4 bg-brown-salt  ">
 
 
-  <div class="galerie after:drop-shadow-shadesm flex md:justify-around justify-center  md:after:drop-shadow-shademd after:bg-etagere after:h-4 after:top-[100%] md:after:top-[93%] after:absolute after:bg-no-repeat after:bg-contain  after:content-[''] after:w-full md:after:scale-x-[1.13] md:after:h-full flex-col md:flex-row" >
+  <div class="transform galerie after:drop-shadow-shadesm flex md:justify-around justify-center  md:after:drop-shadow-shademd  after:bg-etagere-sm md:after:bg-etagere  after:top-[93%]  after:absolute after:bg-no-repeat  after:h-[100%] after:bg-contain md:after:bg-contain  after:content-[''] after:w-full  md:after:scale-x-[1.13]  md:after:h-full flex-col md:flex-row" >
     <div class="flex  flex-col grow md:grow-0 z-10 items-center md:justify-evenly pb-3 sm:p-3">
       <h1 class="font-serif text-4xl text-book-title pb-3 ">Derniers livres ajoutés</h1>
       <button
@@ -16,8 +16,8 @@
       <div class="figure-container flex justify-center md:justify-center basis-2/3  ">
  <ng-container *ngFor="let book of booksList;let i = index;"  >
 
-    <figure    *ngIf="i>3" class="md:px-10 hover:scale-105 transition-all ease-in-out duration-[.25s] before:transition-all before:-right-1 md:before:right-8 before:duration-[.33s] before:ease-in-out  relative before:absolute md:before:drop-shadow-depthmd before:drop-shadow-depthsm before:w-full  before:bg-right w-min-content before:bg-no-repeat before:bg-dep before:content-[''] before:bg-contain before:h-full h-[8.5em] md:h-[15em] mx-2 my-1 z-10 w-16.66% xs:w-30.33%">
-      <div  (click)="openBook(book?.isbn)" class="book bg-cover w-24 md:w-40  h-full" style="background-image:url('{{book?.image}}')"></div>
+    <figure    *ngIf="i>3" class="md:px-10 hover:scale-105 transition-all ease-in-out duration-[.25s] before:transition-all before:-right-[0.2em] md:before:right-8 before:duration-[.33s] before:ease-in-out  relative before:absolute md:before:drop-shadow-depthmd before:drop-shadow-depthsm before:w-full  before:bg-right w-min-content before:bg-no-repeat before:bg-dep before:content-[''] before:bg-contain before:h-[99%] h-[8.2em] md:h-[15em] mx-2 my-1 z-10 w-16.66% xs:w-30.33%">
+      <div  (click)="openBook(book?.isbn)" class="book bg-cover w-[5.5rem] md:w-40  h-full" style="background-image:url('{{book?.image}}')"></div>
     <!--   <img class=" block xs:max-h-[10em] rounded-[0.4em] md:rounded-[0.8em] lg:rounded-[1em] min-w-70px xs:max-w-[6em] max-w-[15em] w-auto h-full relative shadow-[5px_0px_0px_0px_rgba(0,0,0,0.38)]"
         (click)="openBook(book?.isbn)"
         src="{{ book?.image }}"
@@ -31,10 +31,10 @@
 </div>
 
   <div class="home-bottom md:py-2">
-    <div class="galerie2 md:py-10" >
+    <div class="galerie2 md:py-10 justify-between" >
       
-      <figure *ngFor="let onebook of booksList"   class="md:px-3 hover:scale-105 transition-all ease-in-out duration-[.25s] before:transition-all  md:before:right-1 before:-right-1 before:duration-[.33s] before:ease-in-out  relative before:absolute md:before:drop-shadow-depthmd before:drop-shadow-depthsm before:w-full  before:bg-right w-min-content before:bg-no-repeat before:bg-dep before:content-[''] before:bg-contain before:h-full h-[8.5em] md:h-[15em] mx-2 my-1 z-10 w-16.66% xs:w-30.33%">
-          <div  (click)="openBook(onebook?.isbn)" class="book bg-cover w-24 md:w-40 h-[8.5em] md:h-[15em]" style="background-image:url('{{onebook?.image}}')"></div>
+      <figure *ngFor="let onebook of booksList"   class="md:px-3 hover:scale-105 transition-all ease-in-out duration-[.25s] before:transition-all  md:before:right-1 before:-right-[0.2em] before:duration-[.33s] before:ease-in-out  relative before:absolute md:before:drop-shadow-depthmd before:drop-shadow-depthsm before:w-full  before:bg-right w-min-content before:bg-no-repeat before:bg-dep before:content-[''] before:bg-contain before:h-full h-[8.5em] md:h-[15em] mx-2 my-1 z-10 w-16.66% xs:w-30.33%">
+          <div  (click)="openBook(onebook?.isbn)" class="book bg-cover w-[5.5rem] md:w-40 h-[8.5em] md:h-[15em]" style="background-image:url('{{onebook?.image}}')"></div>
        <!--  <img class="block max-h-300px rounded-[0.4em] md:rounded-[0.8em] lg:rounded-[1em] min-w-70px max-w-full w-auto h-full relative shadow-[5px_0px_0px_0px_rgba(0,0,0,0.38)] z-20"
           [attr.data-isbnvalue]="onebook?.isbn"
           (click)="openBook(onebook?.isbn)"

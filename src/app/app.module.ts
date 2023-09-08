@@ -73,6 +73,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { ButtonComponent } from './button/button.component';
 import { BookComponent } from './book/book.component';
+import { MybooksComponent } from './mybooks/mybooks.component';
 
 
 
@@ -136,7 +137,8 @@ const AllMaterialModules=[
     ForgotPasswordComponent,
     DashboardComponent,
     ButtonComponent,
-    BookComponent
+    BookComponent,
+    MybooksComponent
     
   ],
   imports: [

@@ -175,8 +175,11 @@ figure:hover:after{
   
 }
 @media only screen and (max-width: 768px) {
-    .galerie:after{
-        
-        transform:scaleY(3)
+    .book:before{
+      
+        width: 2px;
+      
     }
 }
+
+
