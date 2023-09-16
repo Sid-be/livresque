@@ -1,81 +1,84 @@
- <div class="isbn">
-<!--    <form (ngSubmit)="onSubmit()">
-     <div>
-       <mat-form-field class="example-full-width" appearance="fill">
-         <mat-label>ISBN</mat-label>
-         <input matInput placeholder="" [formControl]="isbnForm">
-       </mat-form-field>
-     </div>
-     <button class="button" type="submit" click="onSubmit()">Recherche</button>
-   </form> -->
- </div>
+<div class="isbn">
+  <form (ngSubmit)="getBook()">
+    <div class="relative">
+      <label for="isbn" class="block mb-2">ISBN</label>
+      <input id="isbn" type="text" class="w-full px-3 py-2 border rounded" placeholder="" [formControl]="isbnForm">
+    </div>
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Recherche</button>
+  </form>
+</div>
 
- <div class="fiche">
-   <div class="couv"><img [src]="imageSrc" >
-     <div *ngIf="imageSrc" class="validate"><button class="button" (click)="ShowInput()">Modifier la couverture</button>
-     </div>
-     <form (ngSubmit)="onUpdate()">
-       <mat-form-field [ngClass]="[btnStyle]" appearance="fill">
-         <mat-label>Adresse de la nouvelle image</mat-label>
-         <input matInput placeholder="" [formControl]="image">
-       </mat-form-field>
-       <button class="button" [ngClass]="[btnStyle]" type="submit" (click)="onUpdate()">valider</button>
-     </form>
-   </div>
-   <div class="infos">
-    <mat-form-field class="example-full-width" appearance="fill" *ngIf="!resume?.title">
-      <mat-label>Titre</mat-label>
-      <input matInput placeholder="Ajouter un titre" [formControl]="title">
-    </mat-form-field>
-     <div class="title">{{resume?.title}}</div>
-     <mat-form-field class="example-full-width" appearance="fill" *ngIf="!resume?.authors">
-      <mat-label>Auteur</mat-label>
-      <input matInput placeholder="Ajouter un auteur" [formControl]="authors">
-    </mat-form-field>
-     <div class="auteur"><b>Auteur: </b> <span *ngIf="resume" >{{resume.authors[0]}}</span></div>
-     <div class="star">
-       <!-- <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating> -->
-     </div>
-     <mat-form-field appearance="fill">
-      <mat-label>Genres</mat-label>
+<div class="fiche">
+  <div class="couv">
+    <img [src]="imageSrc" class="w-full">
+    <div *ngIf="imageSrc" class="mt-2">
+    
+      <button class="inline-block border rounded-full hover:bg-book-lion hover:text-book-champ border-book-lion p-4 text-book-lion px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out   focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
+       (click)="ShowInput()">Modifier la couverture</button>
+    </div>
+  
+  </div>
+  <div class="infos">
+    <div *ngIf="!resume?.title">
+      <div class="relative">
+        <label for="title" class="block mb-2">Titre</label>
+        <input id="title" type="text" class="w-full px-3 py-2 border rounded" placeholder="Ajouter un titre" [formControl]="title">
+      </div>
+    </div>
+    <div class="title">{{resume?.title}}</div>
+    <div *ngIf="!resume?.authors">
+      <div class="relative">
+        <label for="authors" class="block mb-2">Auteur</label>
+        <input id="authors" type="text" class="w-full px-3 py-2 border rounded" placeholder="Ajouter un auteur" [formControl]="authors">
+      </div>
+    </div>
+    <div class="auteur">Auteur:  <span *ngIf="resume" >{{resume.authors[0]}}</span></div>
+    <div class="star">
+      <!-- <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating> -->
+    </div>
+    <div class="relative mb-4">
+      <label class="block mb-2">Genres</label>
       <mat-select [formControl]="genres" multiple>
         <mat-option *ngFor="let genre of genresList" [value]="genre">{{genre}}</mat-option>
       </mat-select>
-    </mat-form-field>
-     <div class="resume">
-       
-       <form (ngSubmit)="submitBookData()">
-         <div class="mat-form">
-           <mat-form-field appearance="fill" *ngIf="!resume?.description">
-             <mat-label>Ajouter un résumé</mat-label>
-             <textarea matInput [formControl]="synopsis" placeholder=></textarea>
-           </mat-form-field>
-         </div>
-       </form>
-     </div>
-     <mat-form-field class="example-full-width" appearance="fill" *ngIf="!resume?.publisher">
-      <mat-label>Editeur</mat-label>
-      <input matInput placeholder="Ajouter un éditeur" [formControl]="publisher">
-    </mat-form-field>
-    
-     <div class="editeur"><b>Editeur: </b>{{resume?.publisher}}</div>
-     
-     <div class="date-publi"><b>Date de publication: </b>{{resume?.publishedDate}}</div>
-     
-     <mat-form-field class="example-full-width" appearance="fill" *ngIf="!resume?.publishedDate">
-      <input matInput [matDatepicker]="myDatepicker">
-      <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-      <mat-datepicker #myDatepicker></mat-datepicker>
-    </mat-form-field>
-     <p>
-       <mat-checkbox [formControl]="favoris"><b> Ajouter au favoris</b></mat-checkbox>
-     </p>
-     <button class="button" (click)="submitBookData()">Ajouter</button>
-   </div>
-   
- </div>
- <div class="resume">
- <span>Résumé:</span> <p>{{resume?.description}}</p></div>
+    </div>
+    <div class="resume">
+      <form (ngSubmit)="submitBookData()">
+        <div class="relative">
+          <label class="block mb-2">Ajouter un résumé</label>
+          <textarea [formControl]="synopsis" class="w-full px-3 py-2 border rounded" placeholder=""></textarea>
+        </div>
+      </form>
+      <form (ngSubmit)="onUpdate()" class="mt-2">
+        <div class="relative">
+          <label for="newImage" class="block mb-2">Adresse de la nouvelle image</label>
+          <input id="newImage" type="text" class="w-full px-3 py-2 border rounded" placeholder="" [formControl]="image">
+        </div>
+        <button type="submit" class="inline-block border rounded-full hover:bg-book-lion hover:text-book-champ border-book-lion p-4 text-book-lion px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out   focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]">valider</button>
+      </form>
+    </div>
+    <div *ngIf="!resume?.publisher">
+      <div class="relative">
+        <label for="publisher" class="block mb-2">Editeur</label>
+        <input id="publisher" type="text" class="w-full px-3 py-2 border rounded" placeholder="Ajouter un éditeur" [formControl]="publisher">
+      </div>
+    </div>
+    <div class="editeur">Editeur: {{resume?.publisher}}</div>
+    <div class="date-publi">Date de publication: {{resume?.publishedDate}}</div>
+    <p>
+      <label class="inline-flex items-center">
+        <input type="checkbox" class="form-checkbox" [formControl]="favoris">
+        <span class="ml-2"> Ajouter au favoris</span>
+      </label>
+    </p>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="submitBookData()">Ajouter</button>
+  </div>
+</div>
+
+<div class="resume">
+  <span>Résumé:</span>
+  <p>{{resume?.description}}</p>
+</div>
 
 
 

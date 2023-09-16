@@ -53,8 +53,8 @@ export class AddbookComponent implements OnInit {
      
     this.actRoute.paramMap.subscribe(params => {
       this.isbnID = params.get('id');
-      // Mettez à jour le contenu en fonction du nouveau paramètre 'genre'
-      this.getLivre();
+     
+      
     });
    
      
@@ -103,14 +103,19 @@ export class AddbookComponent implements OnInit {
     this.image.setValue('');
   }
   }
-  getLivre() {
+  getBook() {
     console.log(this.isbnForm.value)
     this.isLoading = true;
-    this.books.getIsbnDb(this.isbnForm.value).subscribe((result)=>{
+   this.books.getData(this.isbnForm.value).subscribe(
+  ([cover, resumeData]) => {
+    console.log(cover)
     
   
         this.isLoading = false;
-        this.imageSrc=result
+        this.imageSrc=cover;
+        if(resumeData.totalItems!==0){
+          this.resume = resumeData.items[0]?.volumeInfo;
+          }
    
      },
      (error) => {
@@ -119,14 +124,7 @@ export class AddbookComponent implements OnInit {
     }
      );
     
-    this.books.getResume(this.isbnID).subscribe({
-      next: (resume) => {
-        console.log(resume)
-        if(resume.totalItems!==0){
-        this.resume = resume.items[0]?.volumeInfo;
-        }
-      },
-    });
+   
   }
   submitBookData() {
     const livre = new Book()
@@ -180,12 +178,7 @@ this.crudService.setUserBook(livre)
   
 }
   }
- // getBookin() {
-   // this.books.getIsbnDb(this.isbnID['ISBN']).subscribe((data) => {
-    //  console.log(data);
-   // });
-    //console.log(this.livre);
- // }
+
 
   ShowInput() {
     this.btnStyle = 'show';

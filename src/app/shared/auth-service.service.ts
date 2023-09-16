@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { BehaviorSubject, Observable ,of} from 'rxjs';
+import { map } from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
+import { JwtHelperService } from "@auth0/angular-jwt";
+
 
 
 
@@ -11,10 +13,11 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthServiceService {
+  logged=false
   private baseUrl = 'http://localhost:3000/auth';
-private currentUserSubject:BehaviorSubject<string[]|null>=new BehaviorSubject<string[] | null>(null);
-private isLoggedSubject:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(false);
-  constructor(private http: HttpClient) {}
+  private currentUserSubject:BehaviorSubject<string[]|null>=new BehaviorSubject<string[] | null>(null);
+  private isLoggedSubject:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(false);
+  constructor( private http: HttpClient, private jwtHelper: JwtHelperService) {}
   setCurrentUser(user:string[]|null){
     this.currentUserSubject.next(user)
   }
@@ -33,15 +36,18 @@ private isLoggedSubject:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(fa
       map(response => {
         // Sauvegarde du token d'authentification dans le stockage local
         
-      
+        
   
         const decodedToken: any = jwt_decode(response.token);
-        const expirationDate= new Date(decodedToken.exp*1000)
-  
+       
+       
+        
         localStorage.setItem('access_token', response.token);
-        localStorage.setItem("expires_at", JSON.stringify(expirationDate));
+        this.setIsLogged(true)
+        
         this.setCurrentUser([email, decodedToken.name]);
-        this.setIsLogged(true);
+       
+        
   
         console.log(response);
         return response;
@@ -52,12 +58,10 @@ private isLoggedSubject:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(fa
   register(email: string,name:string, password: string): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/register`, { email,name, password }).pipe(
       map(response => {
-        const expiresIn = response.expiresIn; // Durée en secondes
-        const expiresAt = new Date();
-        expiresAt.setSeconds(expiresAt.getSeconds() + expiresIn);
+       
         
         localStorage.setItem('access_token', response.token);
-        localStorage.setItem("expires_at", JSON.stringify(expiresAt.getTime()));
+       
         return response;
       })
     );
@@ -66,9 +70,9 @@ private isLoggedSubject:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(fa
   logout(): void {
     // Suppression du token d'authentification du stockage local
     localStorage.removeItem('access_token');
-    localStorage.removeItem("expires_at");
+    this.setIsLogged(false)
     this.setCurrentUser(null);
-    this.setIsLogged(false);
+   
     
  
     
@@ -82,30 +86,23 @@ private isLoggedSubject:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(fa
       })
     );
   }
-
-  public isLoggedIn() {
-    const currentDateTime = new Date();
-    const expirationDate = this.getExpiration();
-    const isLoggedIn = expirationDate && currentDateTime < expirationDate;
+  getToken() {
 
     
+    const token = localStorage.getItem('access_token');
+    return token;
+  }
+  public isAuthenticated(): Observable<boolean> {
+   
+    this.setIsLogged(!this.jwtHelper.isTokenExpired(this.getToken()))
+    return this.getIsLogged()
   }
 
 /* isLoggedOut() {
     return !this.isLoggedIn();
 } */
 
-getExpiration() {
-  const expiration = localStorage.getItem("expires_at");
 
-  if (expiration) {
-    const expiresAt = new Date(JSON.parse(expiration));
-    console.log('Expiration Date:', expiresAt); 
-    return expiresAt;
-  } else {
-    return null; // Ou renvoie false si tu préfères, cela dépend de ton cas d'utilisation.
-  }
-}
   //  let auth=false
  // auth= this.getCurrentUser().subscribe(user=>{user?true:false})
   //return this.auth

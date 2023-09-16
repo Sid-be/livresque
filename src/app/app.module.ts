@@ -74,6 +74,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
 import { ButtonComponent } from './button/button.component';
 import { BookComponent } from './book/book.component';
 import { MybooksComponent } from './mybooks/mybooks.component';
+import { JwtModule } from '@auth0/angular-jwt'; 
 
 
 
@@ -148,7 +149,13 @@ const AllMaterialModules=[
     HttpClientModule,
     BrowserAnimationsModule,
     HotToastModule.forRoot(),
-   
+    JwtModule.forRoot({
+      config: {
+        
+        allowedDomains: ["localhost:4200"],  
+        disallowedRoutes: [],
+      },
+    }),
     FlexLayoutModule,
     AllMaterialModules,
    

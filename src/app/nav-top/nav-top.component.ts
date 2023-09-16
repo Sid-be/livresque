@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BooksService } from '../shared/books.service';
 import { AuthServiceService } from '../shared/auth-service.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-nav-top',
@@ -10,13 +11,15 @@ import { AuthServiceService } from '../shared/auth-service.service';
 })
 export class NavTopComponent implements OnInit {
   nickname:string='';
-  logged:boolean=false;
+  logged:boolean
 
   constructor(private router: Router, public book:BooksService, public auth:AuthServiceService) { }
   isDropdownOpen = false;
   ngOnInit(): void {
-    this.auth.getCurrentUser().subscribe((user)=>{if(user){this.nickname=user[1]}});
-   this.auth.getIsLogged().subscribe((logged)=>{this.logged=logged; console.log(this.logged)})
+this.auth.getCurrentUser().subscribe((user)=>{if(user){this.nickname=user[1]}});
+this.auth.isAuthenticated().subscribe(logged=>this.logged=logged);
+  
+ 
 
   }
   showlivreservice(){

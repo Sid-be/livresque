@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap,BehaviorSubject,map } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { Book } from '../livres';
 import { Resume } from '../resume';
 
@@ -16,11 +16,8 @@ export class BooksService {
   livre:Book;
   googleback:any;
   imageSrc:string;
-  headers = {
-    "Content-Type": 'application/json',
-    "Authorization": '48626_4b98576d5521e9a08a616cbb4f5ab7e2'
-  }
-  gID:any;
+ 
+
  
   getIsbnDb(id:any){
 
@@ -32,6 +29,12 @@ export class BooksService {
    
     return this.http.get<Resume>('https://www.googleapis.com/books/v1/volumes?q=isbn:'+id);
 
+  }
+  getData(id: any): Observable<[any, any]> {
+    return forkJoin([
+      this.getIsbnDb(id),
+      this.getResume(id)
+    ]);
   }
   
   

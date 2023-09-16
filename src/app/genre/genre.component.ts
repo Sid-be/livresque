@@ -43,6 +43,6 @@ booksList:any
 } */
   openBook(id){
    
-     this.router.navigate(['edit', id]);
+     this.router.navigate(['book', id]);
    }
 }
