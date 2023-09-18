@@ -1,10 +1,11 @@
 <div class="isbn">
   <form (ngSubmit)="getBook()">
-    <div class="relative">
-      <label for="isbn" class="block mb-2">ISBN</label>
-      <input id="isbn" type="text" class="w-full px-3 py-2 border rounded" placeholder="" [formControl]="isbnForm">
+    <div class="relative flex justify-center items-center ">
+      <label for="isbn" class="block mb-2 mx-2"> Recherche par ISBN</label>
+      <input id="isbn" type="text" class="w-1/3  h-9 py-1 pl-9 pr-4 text-sm text-coolGray-500 font-medium placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-book-bouton focus:ring-opacity-50 border border-coolGray-200 rounded-lg shadow-xsm" placeholder="" [formControl]="isbnForm">
+      <button type="submit" class="inline-block border rounded-full hover:bg-book-lion hover:text-book-champ border-book-lion p-4 text-book-lion px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out   focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]">Recherche</button>
+
     </div>
-    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Recherche</button>
   </form>
 </div>
 
@@ -22,14 +23,14 @@
     <div *ngIf="!resume?.title">
       <div class="relative">
         <label for="title" class="block mb-2">Titre</label>
-        <input id="title" type="text" class="w-full px-3 py-2 border rounded" placeholder="Ajouter un titre" [formControl]="title">
+        <input id="title" type="text" class="w-full  h-9 py-1 pl-9 pr-4 text-sm text-coolGray-500 font-medium placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-book-bouton focus:ring-opacity-50 border border-coolGray-200 rounded-lg shadow-xsm" placeholder="Ajouter un titre" [formControl]="title">
       </div>
     </div>
     <div class="title">{{resume?.title}}</div>
     <div *ngIf="!resume?.authors">
       <div class="relative">
         <label for="authors" class="block mb-2">Auteur</label>
-        <input id="authors" type="text" class="w-full px-3 py-2 border rounded" placeholder="Ajouter un auteur" [formControl]="authors">
+        <input id="authors" type="text" class="w-full  h-9 py-1 pl-9 pr-4 text-sm text-coolGray-500 font-medium placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-book-bouton focus:ring-opacity-50 border border-coolGray-200 rounded-lg shadow-xsm" placeholder="Ajouter un auteur" [formControl]="authors">
       </div>
     </div>
     <div class="auteur">Auteur:  <span *ngIf="resume" >{{resume.authors[0]}}</span></div>
@@ -46,13 +47,13 @@
       <form (ngSubmit)="submitBookData()">
         <div class="relative">
           <label class="block mb-2">Ajouter un résumé</label>
-          <textarea [formControl]="synopsis" class="w-full px-3 py-2 border rounded" placeholder=""></textarea>
+          <textarea [formControl]="synopsis" class="w-full  h-9 py-1 pl-9 pr-4 text-sm text-coolGray-500 font-medium placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-book-bouton focus:ring-opacity-50 border border-coolGray-200 rounded-lg shadow-xsm" placeholder=""></textarea>
         </div>
       </form>
       <form (ngSubmit)="onUpdate()" class="mt-2">
         <div class="relative">
           <label for="newImage" class="block mb-2">Adresse de la nouvelle image</label>
-          <input id="newImage" type="text" class="w-full px-3 py-2 border rounded" placeholder="" [formControl]="image">
+          <input id="newImage" type="text" class="w-full  h-9 py-1 pl-9 pr-4 text-sm text-coolGray-500 font-medium placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-book-bouton focus:ring-opacity-50 border border-coolGray-200 rounded-lg shadow-xsm" placeholder="" [formControl]="image">
         </div>
         <button type="submit" class="inline-block border rounded-full hover:bg-book-lion hover:text-book-champ border-book-lion p-4 text-book-lion px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out   focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]">valider</button>
       </form>
@@ -60,7 +61,7 @@
     <div *ngIf="!resume?.publisher">
       <div class="relative">
         <label for="publisher" class="block mb-2">Editeur</label>
-        <input id="publisher" type="text" class="w-full px-3 py-2 border rounded" placeholder="Ajouter un éditeur" [formControl]="publisher">
+        <input id="publisher" type="text" class="w-full  h-9 py-1 pl-9 pr-4 text-sm text-coolGray-500 font-medium placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-book-bouton focus:ring-opacity-50 border border-coolGray-200 rounded-lg shadow-xsm" placeholder="Ajouter un éditeur" [formControl]="publisher">
       </div>
     </div>
     <div class="editeur">Editeur: {{resume?.publisher}}</div>
@@ -71,7 +72,7 @@
         <span class="ml-2"> Ajouter au favoris</span>
       </label>
     </p>
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="submitBookData()">Ajouter</button>
+    <button class="inline-block border rounded-full hover:bg-book-lion hover:text-book-champ border-book-lion p-4 text-book-lion px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out   focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]" (click)="submitBookData()">Ajouter</button>
   </div>
 </div>
 
