@@ -16,8 +16,12 @@ Mobile version
 
 
 
+
 The application is based on the Angular framework and and use a REST API available in the "livresque_back" repository. The application serves as a library of books for each user. It is currently under development and undergoing continuous improvements.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
+
+DEMO ACCOUNT : winath13@gmail.com
+Password : 98120256
 
 ## Development server
 
